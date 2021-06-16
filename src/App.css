@@ -1,0 +1,39 @@
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+  margin-top: 19px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.App{
+  text-align: center;
+}
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color: rgb(73, 79, 82);
+  color: white;
+}
+.nav-links{
+  width: 40px;
+  list-style: none;
+  margin: 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
