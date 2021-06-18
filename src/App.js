@@ -37,14 +37,14 @@ const App = () => {
         <Route exact path="/posts/:post_id" component={Post} />
         <Route exact path="/typeinput" component={TypeInput} />
         <Route exact path="/react-hook-form" component={ReactHookForm} />
-      <Route exact path="/formik" component={ReactFormik} />
-      <Route exact path="/customreacthook" component={CustomHookForm} /> */}
+        <Route exact path="/formik" component={ReactFormik} />
+        <Route exact path="/customreacthook" component={CustomHookForm} /> */}
         {/* <Route component={NotFound} />
         <Redirect path="/NotFound" /> */}
         <Route path="*" component={NotFound} />
       </Switch>
     </>
-  );
+  );  
 };
 
 export default App;

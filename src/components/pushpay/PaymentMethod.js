@@ -17,25 +17,25 @@ import {ReactComponent as  WalletImg } from  "./img/wallet.svg"
 
 const routes = [
     {
-      path: "/",
+      path: "/payment/",
       exact: true,
-      sidebar: () => <p>NGN 40.00</p>,
+      // sidebar: () => <p>NGN 40.00</p>,
       main: () => <Card />,
     },
-    {
-      path: "/ussd",
-      sidebar: () => <p>NGN 20.00</p>,
+    {  
+      path: "/payment/ussd",
+      // sidebar: () => <p>NGN 30.00</p>,
       main: () => <USSD />,
       exact: true,
     },
     {
-      path: "/bank",
-      sidebar: () => <p>NGN 20.00</p>,
+      path: "/payment/bank",
+      // sidebar: () => <p>NGN 20.00</p>,
       main: () => <Bank/>,
     },
     {
-      path: "/wallet",
-      sidebar: () => <p>NGN 30.00</p>,
+      path: "/payment/wallet",
+      // sidebar: () => <p>NGN 10.00</p>,
       main: () => <PushPayWallet/>,
       exact: true,
     },
@@ -45,59 +45,71 @@ const PaymentMethod = ({history, match }) => {
 
     return (
         <div className="pay">
-          <div className="header">
-            {/* <img src={} alt="" /> */}
+          
+          {/* <div className=" d-flex justify-content-center align-items-center"> */}
+          <div className="row mx-0  justify-content-center align-items-center">
+
+
+        <Router >
+            <div className="sidebars col-md-4">
+
+            <div className="header">
             <PushImg />
             <h4>Choose payment method</h4>
           </div>
-          <Router>
-            <ul>
+           <div className="">
+           <ul className="list-unstyled list">
               <li>
-                <Link to="/">
-                  <CardImg />
+                <Link to="/payment/">
+                  <CardImg style={{color:'#007bff'}} />
                   <span>Card</span>
                 </Link>
               </li>
               <li>
-                  <Link to="/Ussd">
+                  <Link to="/payment/Ussd">
                   <HashImg />
                   <span>USSD</span>
                   </Link>
                 </li>
                 <li>
-                <Link to="/bank">
+                <Link to="/payment/bank">
                   <BankImg />
                   <span>Bank</span>
                   </Link>
                 </li>
                 <li>
-                <Link to="/wallet">
+                <Link to="/payment/wallet">
                   <WalletImg />
                   <span>PushPay wallet</span>
                   </Link>
                 </li>
             </ul>
-            <div className="sidebars">
-            <p>Processing fee</p>
-              <Switch>
-                {routes.map((route, index) => (
-                    <Route
-                      key={index}
-                      path={route.path}
-                      exact={route.exact}
-                      children={<route.sidebar />}
-                    />
-                ))}
-              </Switch>
+
+                {/* <p>Processing fee</p>
+                <Switch>
+                  {routes.map((route, index) => (
+                      <Route
+                        key={index}
+                        path={route.path}
+                        exact={route.exact}
+                        children={<route.sidebar />}
+                      />
+                  ))}
+                </Switch> */}
             </div>
-            <div className="main">
+           </div>
+
+            <div className="main col-md">
               <Switch>
                 {routes.map((route, index) => (
                   <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
-                ))}
+                  ))}
               </Switch>
             </div>
           </Router>
+          </div>
+
+
         </div>
       );
     
