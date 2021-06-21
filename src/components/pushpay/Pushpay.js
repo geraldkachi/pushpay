@@ -1,10 +1,9 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import Stech from './Stech'
 
 
 
-const Pushpay = ({match, history, location}) => {
+const Pushpay = () => {
     return (
         <div>
             <Stech />
@@ -12,4 +11,4 @@ const Pushpay = ({match, history, location}) => {
     )
 }
 
-export default withRouter(Pushpay)
+export default Pushpay 

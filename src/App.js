@@ -28,7 +28,7 @@ const App = () => {
       {/* <RouteNavbar /> */}
       <Switch>
         <Route exact path="/" component={Pushpay} />
-        <Route exact path="/payment" component={Payment} />
+        <Route path="/payment/card" component={Payment} />
         {/* <Route exact path="/" component={LandifyApp} /> */}
         {/* <Route exact path="/about" component={About} />
         <Route exact path="/contact" component={Contact} />

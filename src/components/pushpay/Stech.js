@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup"
 import { useHistory } from "react-router-dom"
 // import { withRouter } from 'react-router-dom'
+import {ReactComponent as PushP} from "./img/pushp.svg"
 
 const Stech = () => {
 
@@ -31,7 +32,7 @@ const Stech = () => {
         },
         onSubmit: ({email, firstname, lastname, setSubmitting  }) => {
           console.log( `Email: ${email}, Firstname: ${firstname}, Lastname: ${lastname}`)
-          history.push('payment')
+          history.push('/payment/card')
         },
         validationSchema: Yup.object().shape({
           email: Yup.string().email('Invalid email').required(''),    
@@ -50,8 +51,11 @@ const Stech = () => {
 
     return (
         <div className="min-vh-100 d-flex justify-content-center align-items-center mx-3">
-        <div className="w-50 d-none d-sm-block" style={{width: "220px"}}>
+        <div className="">
           <header className="text-center">
+            <div className="text-center my-3">
+                <PushP />
+            </div>
             <p className="fs-1" style={{textTransform: "uppercase",letterSpacing: "1px", fontFamily: 'Work Sans'}}>BY NASKKO TECH</p>
           </header>
            <form onSubmit={handleSubmit} className='rounded-3 border border-2 p-4' style={{background: "#f7f7f7", borderRadius:'20px'}}>
@@ -116,17 +120,13 @@ const input ={
     borderWeight: "1px",
     borderColor: "#ccc",
     borderRadius: "20px",
-    // border: 1px solid #ccc;
-    // margin-top: 1rem!important;
-    // margin-top: 1rem!important;
     fontFamily: 'Work Sans'
 }
 
 const labeltext = {
-    // fontFamily: Work Sans,sans-serif,
+    fontFamily: "Work Sans",
     // fontSize: "1.6rem",
     color: "#23609e",
-    fontFamily: 'Work Sans'
 }
 
 export default Stech

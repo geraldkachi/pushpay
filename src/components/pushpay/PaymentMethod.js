@@ -17,27 +17,28 @@ import {ReactComponent as  WalletImg } from  "./img/wallet.svg"
 
 const routes = [
     {
-      path: "/payment/",
+      path: "/payment/card",
       exact: true,
-      // sidebar: () => <p>NGN 40.00</p>,
+      sidebar: () => <p>NGN 40.00</p>,
       main: () => <Card />,
     },
     {  
       path: "/payment/ussd",
-      // sidebar: () => <p>NGN 30.00</p>,
-      main: () => <USSD />,
       exact: true,
+      sidebar: () => <p>NGN 30.00</p>,
+      main: () => <USSD />,
     },
     {
       path: "/payment/bank",
-      // sidebar: () => <p>NGN 20.00</p>,
+      exact: true,
+      sidebar: () => <p>NGN 20.00</p>,
       main: () => <Bank/>,
     },
     {
       path: "/payment/wallet",
-      // sidebar: () => <p>NGN 10.00</p>,
-      main: () => <PushPayWallet/>,
       exact: true,
+      sidebar: () => <p>NGN 10.00</p>,
+      main: () => <PushPayWallet/>,
     },
   ];
 
@@ -60,7 +61,7 @@ const PaymentMethod = ({history, match }) => {
            <div className="">
            <ul className="list-unstyled list">
               <li>
-                <Link to="/payment/">
+                <Link to="/payment/card">
                   <CardImg style={{color:'#007bff'}} />
                   <span>Card</span>
                 </Link>
@@ -85,7 +86,7 @@ const PaymentMethod = ({history, match }) => {
                 </li>
             </ul>
 
-                {/* <p>Processing fee</p>
+                <p>Processing fee</p>
                 <Switch>
                   {routes.map((route, index) => (
                       <Route
@@ -95,11 +96,11 @@ const PaymentMethod = ({history, match }) => {
                         children={<route.sidebar />}
                       />
                   ))}
-                </Switch> */}
+                </Switch>
             </div>
            </div>
 
-            <div className="main col-md">
+            <div className="main col-md bg-success">
               <Switch>
                 {routes.map((route, index) => (
                   <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
@@ -116,4 +117,8 @@ const PaymentMethod = ({history, match }) => {
 }
 
 export default withRouter(PaymentMethod)
- 
+// includes()  is a method taht take s a singel argurement
+// what it does is that it checks if there is an item in that array ed
+// const  myArray = [1, 2, 3, 4, 5]
+// myArraya.includes(3)
+// output = true

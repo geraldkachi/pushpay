@@ -8,7 +8,7 @@ const NotFound = ({ history }) => {
             Page not found...
             <div className=" vh-100">
                 <Spinner />
-                <button onClick={() => history.push('/')} className="btn btn-primary rounded-3">Press Me!</button>
+                <button onClick={() => history.goBack()} className="btn btn-primary rounded-3">Press Me!</button>
             </div>
         </div>
     )
