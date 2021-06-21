@@ -2,24 +2,19 @@ import React from "react";
 import { Route, Switch,
   //  Redirect 
   } from "react-router-dom";
-import RouteNavbar from "./components/RouteNavbar";
-// import Home from "./components/Home";
-// import About from "./components/About";
-// import Contact from "./components/Contact";
-// import Post from "./components/Post";
-// import SignIn from "./components/SignIn";
-// import SignUp from "./components/SignUp";
+
 import NotFound from "./components/NotFound";
-// import TypeInput from "./components/TypeInput";
-// import CustomHookForm from "./components/customhooklogic/CustomHookForm";
+
 
 
 import "./App.css";
 import Pushpay from "./components/pushpay/Pushpay";
 import Payment from "./components/pushpay/Payment";
-// import ReactFormik from "./components/reactform/ReactFormik";
-// import ReactHookForm from "./components/reactform/ReactHookForm";
-// import LandifyApp from "./components/landify/LandifyApp";
+
+import USSD from "./components/pushpay/USSD";
+import Bank from "./components/pushpay/Bank";
+import PushPayWallet from "./components/pushpay/PushPayWallet";
+
 
 
 const App = () => {
@@ -28,21 +23,15 @@ const App = () => {
       {/* <RouteNavbar /> */}
       <Switch>
         <Route exact path="/" component={Pushpay} />
-        <Route path="/payment/card" component={Payment} />
-        {/* <Route exact path="/" component={LandifyApp} /> */}
-        {/* <Route exact path="/about" component={About} />
-        <Route exact path="/contact" component={Contact} />
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/posts/:post_id" component={Post} />
-        <Route exact path="/typeinput" component={TypeInput} />
-        <Route exact path="/react-hook-form" component={ReactHookForm} />
-        <Route exact path="/formik" component={ReactFormik} />
-        <Route exact path="/customreacthook" component={CustomHookForm} /> */}
-        {/* <Route component={NotFound} />
-        <Redirect path="/NotFound" /> */}
+        <Route exact path="/payment/card" component={Payment} />
+
+        <Route path="/payment/ussd" component={Payment} />
+        <Route path="/payment/bank" component={Payment} />
+        <Route path="/payment/wallet" component={Payment} />
+
+
         <Route path="*" component={NotFound} />
-      </Switch>
+      </Switch>  
     </>
   );  
 };

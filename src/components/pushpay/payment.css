@@ -1,0 +1,33 @@
+.backpay {
+    background:"#E5E5E5";
+}
+.backrad {
+    background: "#F2F2F2";
+    border-radius: "50px"; 
+    min-height: "400px";
+}
+.liClass {
+    margin-bottom: 1rem;
+}
+.liClass a {
+    text-decoration: none;
+    /* border: 5px solid red; */
+}
+.liClass ank:active {
+    background: "#2335ED";
+    width: 100%;
+}
+
+
+
+@media (max-width: 612px) {
+    .backpay {
+        background: "#fff";
+    }
+    .backrad {
+        border-radius: none;
+    }
+    .header {
+        text-align: center;
+    }
+  }

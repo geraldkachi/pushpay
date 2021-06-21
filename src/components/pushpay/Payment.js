@@ -1,6 +1,9 @@
 import React from 'react'
 import PaymentMethod from './PaymentMethod'
 // import { sections } from "./section"
+import "./payment.css"
+
+import { ListSTyle, BackRad } from "./styled"
 
 
 
@@ -14,11 +17,11 @@ const Payment = () => {
 
     return (
         <>
-            <div className="d-flex justify-content-center align-items-center" style={{background:"#E5E5E5"}}>
+            <div className="d-flex justify-content-center align-items-center vh-100 backpay">
                 <div style={{width: "616px"}}>
-                    <div className='rounded-3 border border-2 p-4 overflow-hidden' style={{background: "#F2F2F2"}}>
+                    <BackRad className='p-4 overflow-hidden'>
                         <PaymentMethod />
-                    </div>
+                    </BackRad>
                 </div>
             </div>
         </>

@@ -32,7 +32,11 @@ const Stech = () => {
         },
         onSubmit: ({email, firstname, lastname, setSubmitting  }) => {
           console.log( `Email: ${email}, Firstname: ${firstname}, Lastname: ${lastname}`)
-          history.push('/payment/card')
+          setTimeout(function(){ 
+            <div><span class="spinner-border spinner-border-sm mr-1"></span> Please wait</div>
+            history.push('/payment/card')
+
+         }, 2000)
         },
         validationSchema: Yup.object().shape({
           email: Yup.string().email('Invalid email').required(''),    
@@ -87,7 +91,7 @@ const Stech = () => {
           {/*  */}
       
           <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3">
-            {handleSubmit ? <span class="spinner-border spinner-border-sm mr-1"></span> : (null)}
+           <span class="spinner-border spinner-border-sm mr-1"></span>
             Pay NGN 1,000.00
           </Button>
             {/* <div class="spinner-border-sm text-light" role="status">
