@@ -1,5 +1,4 @@
 import React from 'react'
-// import {sections} from "./section"
 import PushPayWallet from './PushPayWallet';
 import USSD from './USSD';
 import Card from './Card';
@@ -8,10 +7,11 @@ import {ReactComponent as  PushImg } from  "./img/pushpay.svg"
 import {ReactComponent as  Thund } from  "./img/thund.svg"
 
 
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./payment.css"
 
-import { MainRou } from "./styled"
+import { MainRou, PowerRad } from "./styled"
 import PaySide from "./PaySide"
 
 
@@ -44,6 +44,7 @@ const routes = [
 
 const PaymentMethod = () => {
 
+
     return (
       <>
         <div className="pay">
@@ -56,19 +57,22 @@ const PaymentMethod = () => {
             </div>
 
            <div className="">
-           <PaySide />
+           
+              <PaySide />
 
-                <p style={{fontSize: ".8rem"}}>Processing fee</p>
-                <Switch>
-                  {routes.map((route, index) => (
-                      <Route
+                <div className="bg-white p-2" style={{borderRadius: '10px'}}>
+                    <p style={{fontSize: ".8rem"}}>Processing fee</p>
+                    <Switch>
+                      {routes.map((route, index) => (
+                        <Route
                         key={index}
                         path={route.path}
                         exact={route.exact}
                         children={<route.sidebar />}
-                      />
-                  ))}
-                </Switch>
+                        />
+                        ))}
+                    </Switch>
+                </div>
             </div>
            </div>
 
@@ -83,9 +87,9 @@ const PaymentMethod = () => {
           </div>
         </div>
 
-          {/* <div className="text-center position-absolute my-4"> */}
-            <div className="text-center position-absolute" style={{color:'#0000FF', top: "90%", left: '40%'}}><Thund /> Powered by PushPay</div>
-          {/* </div> */}
+          {/* <PowerRad className="text-center position-absolute my-4"> */}
+            <PowerRad className="text-center position-absolute justify-content-center"><Thund /> Powered by PushPay</PowerRad>
+          {/* </PowerRad> */}
         </>
       );
     

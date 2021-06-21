@@ -5,6 +5,7 @@
     background: "#F2F2F2";
     border-radius: "50px"; 
     min-height: "400px";
+    /* height: 100vh; */
 }
 .liClass {
     margin-bottom: 1rem;
@@ -23,6 +24,7 @@
 @media (max-width: 612px) {
     .backpay {
         background: "#fff";
+        height: none;
     }
     .backrad {
         border-radius: none;

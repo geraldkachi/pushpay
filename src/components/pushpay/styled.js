@@ -1,5 +1,34 @@
 import styled from "styled-components";
 
+export const SideStyle = styled.div`
+  .links {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-weight: 500px;
+    padding: 8px 5px;
+    color: #56799d;
+    &:hover {
+      color: white;
+      background: #2335ed;
+      border-radius: 10px;
+    }
+    span {
+      margin-left: 5px;
+    }
+  }
+`;
+
+export const PowerRad = styled.span`
+  color: #0000ff;
+  // top: 90%;
+  // left: 40%;
+
+  @media screen and (max-width: 800px) {
+    text-align: center;
+}
+`;
+
 export const BackRad = styled.div`
   background: #f2f2f2;
   border-radius: 50px;
@@ -33,3 +62,9 @@ export const ListSTyle = styled.li`
     color: "white;
   }
 `;
+export const PaymentLay = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
+`

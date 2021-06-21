@@ -24,7 +24,6 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Pushpay} />
         <Route exact path="/payment/card" component={Payment} />
-
         <Route path="/payment/ussd" component={Payment} />
         <Route path="/payment/bank" component={Payment} />
         <Route path="/payment/wallet" component={Payment} />
