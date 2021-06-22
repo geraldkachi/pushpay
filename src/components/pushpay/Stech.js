@@ -8,7 +8,22 @@ import {ReactComponent as PushP} from "./img/pushp.svg"
 
 const Stech = () => {
 
-    const history = useHistory()
+  const history = useHistory()
+
+  const [render, setRender] = useState(null)
+  const [showData, setShowData] = useState(false)
+
+  const onChange = ({ target }) => {
+    setRender({ ...render, [target.name]: target.value }) 
+  }
+
+  
+  useEffect(() => {
+    if (render !== null){
+      setShowData(true)
+    } 
+  }, [render])
+
 
     // const [show, setShow] = useState(false);
     function simulateNetworkRequest() {
@@ -30,7 +45,8 @@ const Stech = () => {
           firstname:'',
           lastname: '',
         },
-        onSubmit: ({email, firstname, lastname, setSubmitting  }) => {
+        // setSubmitting
+        onSubmit: ({email, firstname, lastname }) => {
           console.log( `Email: ${email}, Firstname: ${firstname}, Lastname: ${lastname}`)
           setTimeout(function(){ 
             <div><span class="spinner-border spinner-border-sm mr-1"></span> Please wait</div>
@@ -89,11 +105,16 @@ const Stech = () => {
               </FormGroup>
               {touched.email && errors.email ? (<div className='text-danger'>{errors.email}</div>) : (null)}
           {/*  */}
-      
-          <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3">
-           <span class="spinner-border spinner-border-sm mr-1"></span>
-            Pay NGN 1,000.00
-          </Button>
+
+          {!showData ? (
+              <Button type="" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3">
+                Pay NGN 1,000.00
+              </Button>
+            ): (
+              <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3">
+                <span class="spinner-border spinner-border-sm mr-1"></span>Please...
+              </Button>
+            )}
             {/* <div class="spinner-border-sm text-light" role="status">
               <span class="visually-hidden">Loading...</span>
             </div> */}

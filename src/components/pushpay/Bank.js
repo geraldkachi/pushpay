@@ -102,7 +102,7 @@ const Bank = () => {
                               </Button>
                           </div>
                   </form>
-            </div>
+                </div>
                 </div>
                 )}
 
