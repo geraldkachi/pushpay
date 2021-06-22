@@ -111,7 +111,7 @@ const Stech = () => {
                 Pay NGN 1,000.00
               </Button>
             ): (
-              <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3">
+              <Button type="submit" style={paybtn} onChange={onChange} className="text-center btn-block mx-auto px-5 fs-3">
                 <span class="spinner-border spinner-border-sm mr-1"></span>Please...
               </Button>
             )}
