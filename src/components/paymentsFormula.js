@@ -31,7 +31,7 @@ function pushPayUSSD(amount) {
     if (amount >= 5000 && amount < 50000) return  50;
     if (amount >= 50000) return 100; 
 }
-function payment(amount, channel) {
+export function paymentFormular(amount, channel) {
     
     let initialPayment = parseFloat(amount);
     let availableChannels = ['card', 'ussd', 'bank', 'wallet'];
@@ -48,21 +48,21 @@ function payment(amount, channel) {
         if (channel === 'bank' || channel === 'card' ) {
              Cap = 2000;
             if (initialPayment < 2500) {
-                 pushpayCharge = Math.ceil((0.5/100) * initialPayment);
-                 paystackCharge = Math.ceil((1.5/100) * initialPayment);
+                 pushpayCharge = parseFloat((0.5/100) * initialPayment);
+                 paystackCharge = parseFloat((1.5/100) * initialPayment);
                 
-                 totalCharges = Math.ceil(initialPayment + pushpayCharge + paystackCharge);
+                 totalCharges = parseFloat(initialPayment + pushpayCharge + paystackCharge);
                 return {initialPayment, totalCharges, pushpayCharge, paystackCharge, channel}
              }
             if (initialPayment >= 2500) {
-                 pushpayCharge = Math.ceil((0.5/100) * initialPayment);
-                 paystackCharge = Math.ceil((1.5/100) * initialPayment + 100);
+                 pushpayCharge = parseFloat((0.5/100) * initialPayment);
+                 paystackCharge = parseFloat((1.5/100) * initialPayment + 100);
                 
                 if (paystackCharge > Cap) paystackCharge = Cap;
 
                 if (pushpayCharge > Cap) pushpayCharge = Cap;
 
-                totalCharges = Math.ceil(initialPayment + pushpayCharge + paystackCharge);
+                totalCharges = parseFloat(initialPayment + pushpayCharge + paystackCharge);
 
                 return {initialPayment, totalCharges, pushpayCharge, paystackCharge, channel}
             }
@@ -78,7 +78,7 @@ function payment(amount, channel) {
              return { initialPayment, totalCharges, pushpayCharge, channel}
         }
 
-        if (channel == 'wallet') {
+        if (channel === 'wallet') {
             pushpayCharge = pushPayUSSD(initialPayment);
             totalCharges =  initialPayment + pushpayCharge;
             return { initialPayment, totalCharges, pushpayCharge, channel}
@@ -87,4 +87,4 @@ function payment(amount, channel) {
     }
 }
 
-console.log(payment(160000, 'bank'));
+//console.log(paymentFormular(100, 'card'));

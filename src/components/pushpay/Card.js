@@ -3,9 +3,15 @@ import {Input, Label, FormGroup ,Button } from 'reactstrap';
 import { useFormik } from "formik";
 import * as Yup from "yup"
 import { useHistory } from "react-router-dom"
+import { CartContext } from '../../ContextProvider';
 
 
 const Card = () => {
+    const [PaymentContext, setPaymentContext] = React.useContext(CartContext);
+
+    React.useEffect(() => {
+        setPaymentContext({...PaymentContext, channel: "card"})
+    }, [])
 
     const history = useHistory()
 

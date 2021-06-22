@@ -5,6 +5,7 @@ import Card from './Card';
 import Bank from './Bank';
 import {ReactComponent as  PushImg } from  "./img/pushpay.svg"
 import {ReactComponent as  Thund } from  "./img/thund.svg"
+import { CartContext } from '../../ContextProvider';
 
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -12,13 +13,18 @@ import "./payment.css"
 
 import { MainRou, PowerRad } from "./styled"
 import PaySide from "./PaySide"
+import { paymentFormular } from '../paymentsFormula';
 
 
-const routes = [
+const PaymentMethod = () => {
+  const [PaymentContext] = React.useContext(CartContext);
+  // const [routes, setRoutes] = React.useState(null)
+
+  const routes = [
     {
       path: "/payment/card",
       exact: true,
-      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN 40.00</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}</p>,
       main: () => <Card />,
     },
     {  
@@ -40,8 +46,6 @@ const routes = [
       main: () => <PushPayWallet/>,
     },
   ];
-
-const PaymentMethod = () => {
 
 
     return (

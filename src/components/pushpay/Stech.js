@@ -1,10 +1,11 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect, useContext} from 'react'
 import {Input, Label, FormGroup ,Button } from 'reactstrap';
 import { useFormik } from "formik";
 import * as Yup from "yup"
 import { useHistory } from "react-router-dom"
 // import { withRouter } from 'react-router-dom'
 import {ReactComponent as PushP} from "./img/pushp.svg"
+import { CartContext } from '../../ContextProvider';
 
 const Stech = () => {
 
@@ -12,6 +13,7 @@ const Stech = () => {
 
   const [render, setRender] = useState(null)
   const [showData, setShowData] = useState(true)
+  const [paymentInfo, setPaymentInfo] = useContext(CartContext)
 
   const onChange = ({ target }) => {
     setRender({ ...render, [target.name]: target.value }) 
@@ -43,10 +45,14 @@ const Stech = () => {
           email: '',
           firstname:'',
           lastname: '',
+          number: ""
         },
+
+
         // setSubmitting
-        onSubmit: ({email, firstname, lastname }) => {
-          console.log( `Email: ${email}, Firstname: ${firstname}, Lastname: ${lastname}`)
+        onSubmit: ({email, firstname, lastname, number }) => {
+          console.log( `Email: ${email}, Firstname: ${firstname}, Lastname: ${lastname}, Amount: ${number} `)
+          setPaymentInfo({...paymentInfo, amount: number})
           setShowData(false)
           setTimeout(function(){ 
             
@@ -105,6 +111,13 @@ const Stech = () => {
                   <Input style={input} placeholder="Email" id="email" type="email" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} />
               </FormGroup>
               {touched.email && errors.email ? (<div className='text-danger'>{errors.email}</div>) : (null)}
+
+
+              <FormGroup>
+                  <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="number">Amount</Label>
+                  <Input style={input} placeholder="Amount" id="number" type="tel" name="number" value={values.number} onChange={handleChange} onBlur={handleBlur} />
+              </FormGroup>
+              {touched.number && errors.number ? (<div className='text-danger'>{errors.number}</div>) : (null)}
           {/*  */}
 
           {showData && (
