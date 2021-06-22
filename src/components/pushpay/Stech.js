@@ -129,7 +129,7 @@ const input ={
 
 const labeltext = {
     fontFamily: "Work Sans",
-    // fontSize: "1.6rem",
+    fontSize: "10px",
     color: "#23609e",
 }
 

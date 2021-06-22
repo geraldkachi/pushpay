@@ -7,6 +7,7 @@ export const SideStyle = styled.div`
     align-items: center;
     font-weight: 500px;
     padding: 8px 5px;
+    margin:3px 0;
     color: #56799d;
     &:hover {
       color: white;
@@ -23,6 +24,7 @@ export const PowerRad = styled.span`
   color: #0000ff;
   text-align: center;
   font-size: 10px;
+  font-family: 'Work Sans';
   // position: absolute; 
   top: 80%;
   left: 45%;
@@ -52,7 +54,7 @@ export const MainRou = styled.div`
   background: #FFFFFF;
   // height: auto;
   border-radius: 20px;
-  min-height: 333px;
+  min-height: 350px;
 
   @media screen and (max-width: 770px ) {
     min-height: unset;

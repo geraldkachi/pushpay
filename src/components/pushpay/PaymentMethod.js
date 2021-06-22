@@ -75,7 +75,7 @@ const PaymentMethod = () => {
             </div>
            </div>
 
-            <MainRou className="main col-md mt-5 mb-2">
+            <MainRou className="main col-md mt-2 mb-2 py-3">
               <Switch>
                 {routes.map((route, index) => (
                   <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
