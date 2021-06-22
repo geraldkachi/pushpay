@@ -11,16 +11,15 @@ const Stech = () => {
   const history = useHistory()
 
   const [render, setRender] = useState(null)
-  const [showData, setShowData] = useState(false)
+  const [showData, setShowData] = useState(true)
 
   const onChange = ({ target }) => {
     setRender({ ...render, [target.name]: target.value }) 
   }
-
   
   useEffect(() => {
     if (render !== null){
-      setShowData(true)
+      //setShowData(true)
     } 
   }, [render])
 
@@ -48,8 +47,10 @@ const Stech = () => {
         // setSubmitting
         onSubmit: ({email, firstname, lastname }) => {
           console.log( `Email: ${email}, Firstname: ${firstname}, Lastname: ${lastname}`)
+          setShowData(false)
           setTimeout(function(){ 
-            <div><span class="spinner-border spinner-border-sm mr-1"></span> Please wait</div>
+            
+            //<div><span class="spinner-border spinner-border-sm mr-1"></span> Please wait</div>
             history.push('/payment/card')
 
          }, 2000)
@@ -106,15 +107,18 @@ const Stech = () => {
               {touched.email && errors.email ? (<div className='text-danger'>{errors.email}</div>) : (null)}
           {/*  */}
 
-          {!showData ? (
-              <Button type="" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3">
+          {showData && (
+              <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3">
                 Pay NGN 1,000.00
               </Button>
-            ): (
-              <Button type="submit" style={paybtn} onChange={onChange} className="text-center btn-block mx-auto px-5 fs-3">
-                <span class="spinner-border spinner-border-sm mr-1"></span>Please...
-              </Button>
             )}
+
+            {!showData && (
+               <Button type="submit" style={paybtn} onChange={onChange} className="text-center btn-block mx-auto px-5 fs-3">
+               <span class="spinner-border spinner-border-sm mr-1"></span>Please...
+             </Button>
+            )}
+
             {/* <div class="spinner-border-sm text-light" role="status">
               <span class="visually-hidden">Loading...</span>
             </div> */}
@@ -155,6 +159,7 @@ const labeltext = {
 }
 
 export default Stech
+
 
 
 
