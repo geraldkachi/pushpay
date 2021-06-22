@@ -58,7 +58,6 @@ const PaymentMethod = () => {
            <div className="">
            
               <PaySide />
-{/* d-sm-none d-md-block .d-none .d-sm-block  */}
                 <div className="bg-white p-2" style={{borderRadius: '10px'}}>
                     <p style={{fontSize: ".9rem"}}>Processing fee</p>
                     <Switch>

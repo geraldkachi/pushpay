@@ -1,62 +1,111 @@
 import styled from "styled-components";
 
+const colors = {
+  back: "#2335ed",
+  front: null,
+};
+
 export const SideStyle = styled.div`
-  .links {
-    text-decoration: none;
-    display: flex;
+
+ul {
+  padding-left: 0;
+  li {
+    list-style: none;
     align-items: center;
-    font-weight: 500px;
-    padding: 8px 5px;
-    margin:3px 0;
-    color: #56799d;
-    &:hover {
+    li:hover {
       color: white;
-      background: #2335ed;
-      border-radius: 10px;
     }
-    span {
-      margin-left: 5px;
+    .links {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-weight: 500px;
+      padding: 8px 5px;
+      color: #56799D;
+      &:hover {
+        color: white;
+        background: #2335ED;
+        border-radius: 10px;
+      }
+      span {
+        margin-left: 5px;
+      }
     }
   }
+}
+
+  // ul {
+  //   padding-left: 0;
+  //   li {
+  //     list-style: none;
+  //     align-items: center;
+  //     li:hover {
+  //       color: white;
+  //     }
+
+  //     .links {
+  //       text-decoration: none;
+  //       display: flex;
+  //       align-items: center;
+  //       font-weight: 500px;
+  //       padding: 8px 5px;
+  //       margin: 3px 0;
+  //       color: #56799d;
+  //       &:hover {
+  //         color: white;
+  //         // background: #2335ed;
+  //         background: ${colors.back};
+  //         border-radius: 10px;
+  //       }
+  //       &:isactive {
+  //         background: #2335ed;
+  //       }
+  //       span {
+  //         margin-left: 5px;
+  //       }
+  //     }
+  //   }
+  // }
 `;
 
 export const PowerRad = styled.span`
   color: #0000ff;
   text-align: center;
   font-size: 10px;
-  font-family: 'Work Sans';
-  // position: absolute; 
+  font-family: "Work Sans";
+  // position: absolute;
   top: 80%;
   left: 45%;
   margin: auto;
-  display:  block;
- 
+  display: block;
 
   @media screen and (max-width: 600px) {
     text-align: center;
-    display:  block;
+    display: block;
     z-index: 999px;
     margin-top: 80px;
-}
+  }
 `;
+
+// const activePath = window.location.pathname
 
 export const BackRad = styled.div`
   background: #f2f2f2;
   border-radius: 50px;
   // min-height: 400px;
 
-   @media screen and (max-width: 596px) {
-        background: #fff;
-   }
+  @media screen and (max-width: 596px) {
+    background: #fff;
+  }
 `;
 
 export const MainRou = styled.div`
-  background: #FFFFFF;
+  background: #ffffff;
   // height: auto;
   border-radius: 20px;
-  min-height: 350px;
+  min-height: 375px;
 
-  @media screen and (max-width: 770px ) {
+  @media screen and (max-width: 770px) {
     min-height: unset;
   }
 `;
@@ -97,5 +146,5 @@ export const PaymentLay = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-}
-`
+  }
+`;

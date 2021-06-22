@@ -12,11 +12,11 @@ const Card = () => {
     const {handleSubmit, handleChange, values, touched, errors, handleBlur} = useFormik({
         initialValues: {
           email: '',
-          firstname:'',
-          lastname: '',
+          number:'',
+          date: '',
         },
-        onSubmit: ({email, firstname, lastname, setSubmitting  }) => {
-          console.log( `Email: ${email}, Firstname: ${firstname}, Lastname: ${lastname}`)
+        onSubmit: ({email, number, date, setSubmitting  }) => {
+          console.log( `Email: ${email}, Card Number: ${number}, Date: ${date}`)
           setTimeout(function(){ 
             <div><span class="spinner-border spinner-border-sm mr-1"></span> Please wait</div>
             history.push('/payment/card')
@@ -24,9 +24,9 @@ const Card = () => {
          }, 2000)
         },
         validationSchema: Yup.object().shape({
+          number: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
+          date: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
           email: Yup.string().email('Invalid email').required(''),    
-          firstname: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
-          lastname: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
         })
       })
 
@@ -43,20 +43,20 @@ const Card = () => {
                     <div className="row m-0">
                         <div className="col-md">
                             <FormGroup>
-                                <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="Firstname">Card number</Label>
-                                <Input style={input} placeholder="0000 0000 0000 0000" id="firstname" type="text" name="firstname" value={values.firstname} onChange={handleChange} onBlur={handleBlur} />  
+                                <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="Card Number">Card number</Label>
                             </FormGroup>
-                            {touched.firstname && errors.firstname ? (<div className='text-danger'>{errors.firstname}</div>) : (null)}
+                                <Input style={input} placeholder="0000 0000 0000 0000" id="number" type="text" name="number" value={values.number} onChange={handleChange} onBlur={handleBlur} />  
+                            {touched.number && errors.number ? (<div className='text-danger'>{errors.number}</div>) : (null)}
                         </div>
                     </div>
 
                     <div className="row mx-0">
                             <div className="col-sm-6">
                                 <FormGroup>
-                                <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="email">Expiry date</Label>
-                                <Input style={input} placeholder="MM / YY" id="lastname" type="text" name="lastname" value={values.lastname} onChange={handleChange} onBlur={handleBlur} />
+                                <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="date">Expiry date</Label>
+                                <Input style={input} placeholder="MM / YY" id="date" type="date" name="date" value={values.date} onChange={handleChange} onBlur={handleBlur} />
                                 </FormGroup>
-                                {touched.lastname && errors.lastname ? (<div className='text-danger'>{errors.lastname}</div>) : (null)}
+                                {touched.date && errors.date ? (<div className='text-danger'>{errors.date}</div>) : (null)}
                         </div>
                         <div className="col-sm-6">
                         <FormGroup>
@@ -93,7 +93,7 @@ const paybtn = {
     borderRadius: "20px",
     marginTop: "2.5rem",
     fontFamily: 'Work Sans',
-    padding: ".8rem"
+    padding: ".5rem"
 }
 
 const input ={
