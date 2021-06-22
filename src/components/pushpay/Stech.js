@@ -55,7 +55,7 @@ const Stech = () => {
 
     return (
         <div className="min-vh-100 d-flex justify-content-center align-items-center mx-3">
-        <div className="">
+        <div className=""  style={{width: "400px"}}>
           <header className="text-center">
             <div className="text-center my-3">
                 <PushP />

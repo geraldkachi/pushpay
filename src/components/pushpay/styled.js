@@ -21,11 +21,20 @@ export const SideStyle = styled.div`
 
 export const PowerRad = styled.span`
   color: #0000ff;
-  // top: 90%;
-  // left: 40%;
+  text-align: center;
+  font-size: 10px;
+  // position: absolute; 
+  top: 80%;
+  left: 45%;
+  margin: auto;
+  display:  block;
+ 
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 600px) {
     text-align: center;
+    display:  block;
+    z-index: 999px;
+    margin-top: 80px;
 }
 `;
 
@@ -33,13 +42,21 @@ export const BackRad = styled.div`
   background: #f2f2f2;
   border-radius: 50px;
   // min-height: 400px;
+
+   @media screen and (max-width: 596px) {
+        background: #fff;
+   }
 `;
 
 export const MainRou = styled.div`
-  background: "#FFFFFF";
-  height: auto;
+  background: #FFFFFF;
+  // height: auto;
   border-radius: 20px;
-  // min-height: 300px;
+  min-height: 333px;
+
+  @media screen and (max-width: 770px ) {
+    min-height: unset;
+  }
 `;
 
 export const ListSTyle = styled.li`
@@ -66,5 +83,17 @@ export const PaymentLay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-basis: 100%;
+  height: 100vh;
+  // flex-basis: 100%;
+
+  @media screen and (max-width: 600px) {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    height: auto;
+    background: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 `

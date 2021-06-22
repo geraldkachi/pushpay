@@ -7,8 +7,7 @@ import {ReactComponent as  PushImg } from  "./img/pushpay.svg"
 import {ReactComponent as  Thund } from  "./img/thund.svg"
 
 
-
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./payment.css"
 
 import { MainRou, PowerRad } from "./styled"
@@ -19,25 +18,25 @@ const routes = [
     {
       path: "/payment/card",
       exact: true,
-      sidebar: () => <p className="fs-1">NGN 40.00</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN 40.00</p>,
       main: () => <Card />,
     },
     {  
       path: "/payment/ussd",
       exact: true,
-      sidebar: () => <p className="fs-1">NGN 30.00</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN 30.00</p>,
       main: () => <USSD />,
     },
     {
       path: "/payment/bank",
       exact: true,
-      sidebar: () => <p className="fs-1">NGN 20.00</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN 20.00</p>,
       main: () => <Bank/>,
     },
     {
       path: "/payment/wallet",
       exact: true,
-      sidebar: () => <p className="fs-1">NGN 10.00</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN 10.00</p>,
       main: () => <PushPayWallet/>,
     },
   ];
@@ -51,7 +50,7 @@ const PaymentMethod = () => {
            <div className="row mx-0 justify-content-center align-items-start">
         <Router>
             <div className="sidebars col-md-4">
-            <div className="header">
+            <div className="header  mt-3">
               <PushImg />
               <h4 className="my-3" style={{ fontSize: ".6rem", fontWeight: 500 }}>Choose payment method</h4>
             </div>
@@ -59,9 +58,9 @@ const PaymentMethod = () => {
            <div className="">
            
               <PaySide />
-
+{/* d-sm-none d-md-block .d-none .d-sm-block  */}
                 <div className="bg-white p-2" style={{borderRadius: '10px'}}>
-                    <p style={{fontSize: ".8rem"}}>Processing fee</p>
+                    <p style={{fontSize: ".9rem"}}>Processing fee</p>
                     <Switch>
                       {routes.map((route, index) => (
                         <Route
@@ -76,7 +75,7 @@ const PaymentMethod = () => {
             </div>
            </div>
 
-            <MainRou className="main col-md">
+            <MainRou className="main col-md mt-5 mb-2">
               <Switch>
                 {routes.map((route, index) => (
                   <Route key={index} path={route.path} exact={route.exact} children={<route.main />} />
@@ -87,9 +86,9 @@ const PaymentMethod = () => {
           </div>
         </div>
 
-          {/* <PowerRad className="text-center position-absolute my-4"> */}
-            <PowerRad className="text-center position-absolute justify-content-center"><Thund /> Powered by PushPay</PowerRad>
-          {/* </PowerRad> */}
+          <>
+          </>
+            <PowerRad className="text-center"><Thund /> Powered by PushPay</PowerRad>
         </>
       );
     
@@ -101,3 +100,6 @@ export default PaymentMethod
 // const  myArray = [1, 2, 3, 4, 5]
 // myArraya.includes(3)
 // output = true
+
+
+// 13579felix

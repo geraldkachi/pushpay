@@ -3,7 +3,7 @@ import PaymentMethod from './PaymentMethod'
 // import { sections } from "./section"
 import "./payment.css"
 
-import { ListSTyle, BackRad, PaymentLay } from "./styled"
+import { BackRad, PaymentLay } from "./styled" //ListSTyle
 
 
 
@@ -13,13 +13,13 @@ const Payment = () => {
     //     section.map
     // ) : (
     //     <div>loading...</div>
-    // ) d-flex justify-content-center align-items-center 
+    // )  d-flex justify-content-center align-items-center 
 
     return (
         <>
-            <PaymentLay className="vh-100 backpay">
+            <PaymentLay className="backpay">
                 <div style={{width: "616px"}}>
-                    <BackRad className='p-4 overflow-hidden'>
+                    <BackRad className='p-4 overflow-hidden backrad'>
                         <PaymentMethod />
                     </BackRad>
                 </div>
