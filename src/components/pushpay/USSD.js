@@ -1,11 +1,55 @@
-import React, { useState } from 'react'
+import { useState,useEffect } from "react";
 import { Input } from "reactstrap"
 
 const USSD = () => {
 
+        const options = [
+            {
+                bank: 'First Bank',
+                ussd: '894'
+            },
+            {
+                bank: 'Polaris Bank',
+                ussd: '784'
+            },
+            {
+                bank: 'Access Bank',
+                ussd: '124'
+            },
+            {
+                bank: 'Kuda Bank',
+                ussd: '994'
+            }
+        ]
+
+
+   
+
     const [dropdownOpen, setOpen] = useState(false)
 
     const toggle = () => setOpen(!dropdownOpen)
+
+    ///
+    const [render, setRender] = useState(null)
+    const [showData, setShowData] = useState(false)
+    const [count,setCount] = useState(0)
+    const [countThree,setCountThree] = useState(0)
+
+    const onChange = ({ target }) => {
+        setRender({ ...render, [target.name]: target.value })
+        setCount([Math.floor((Math.random()* 100000000000000))])
+
+        setRender({ ...render, [target.name]: target.value })
+        setCountThree([Math.floor((Math.floor(Math.random() * 1000) + 1))])
+    }
+    // const onChangeThree = ({ target }) => {
+    // }
+
+    useEffect(() => {
+        if (render !== null){
+            setShowData(true)
+        }
+    }, [render])
 
     return (
         <div>
@@ -16,7 +60,7 @@ const USSD = () => {
 
             <div className="justify-content-center align-items-center">
                 <span>
-                    <Input type="select" name="backdrop" id="backdrop" 
+                    <Input type="select" name="backdrop" id="backdrop" onChange={onChange} 
                         // onChange={changeBackdrop}
                         className="d-flex border border-1 my-3" placeholder="Pick here to choose" caret onClick={toggle} style={{borderColor:"none",boxShadow:'none', borderRadius: "20px"}}>
                         <option className="" value="true">Pick here to choose</option>
@@ -35,6 +79,20 @@ const USSD = () => {
                     </Input>
                 </span>
             </div>
+
+
+            {showData &&(
+                <div className="mx-auto text-center mt-5">
+                    <p style={{fontSize: "25px", fontFamily: "Work Sans"}}>{options.find(option => option.bank === render.bank)?.ussd}*{countThree}*{count}#</p>
+                </div>
+                )}
+
+            {/* <select name="bank"  >
+                <option hidden>Click here to choose</option>
+                {options.map((option) => (
+                    <option value={option.bank}>{option.bank}</option>
+                ))}
+            </select> */}
 
         </div>
     )

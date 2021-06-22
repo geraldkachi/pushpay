@@ -61,7 +61,7 @@ const Card = () => {
                         <div className="col-sm-6">
                         <FormGroup>
                             <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="email">CVV</Label>
-                            <Input style={input} placeholder="CVV" id="email" type="email" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} />
+                            <Input maxLength="3" style={input} placeholder="CVV" id="email" type="email" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} />
                         </FormGroup>
                         {touched.email && errors.email ? (<div className='text-danger'>{errors.email}</div>) : (null)}
                     </div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+// , { useState }
 
 import { ReactComponent as CardImg } from "./img/card.svg";
 import { ReactComponent as HashImg } from "./img/hash.svg";
@@ -7,35 +8,35 @@ import { ReactComponent as WalletImg } from "./img/wallet.svg";
 
 import { Link } from "react-router-dom";
 import { SideStyle } from "./styled";
-import Pay from "./Pay";
+// import Pay from "./Pay";
 
-const slideprops = [
-  {
-    to: "/payment/card",
-    icon: CardImg,
-    title: "card",
-  },
-  {
-    to: "/payment/ussd",
-    icon: HashImg,
-    title: "Ussd",
-  },
-  {
-    to: "/payment/bank",
-    icon: BankImg,
-    title: "bank",
-  },
-  {
-    to: "/payment/wallet",
-    icon: WalletImg,
-    title: "PushPay wallet",
-  },
-];
+// const slideprops = [
+//   {
+//     to: "/payment/card",
+//     icon: CardImg,
+//     title: "card",
+//   },
+//   {
+//     to: "/payment/ussd",
+//     icon: HashImg,
+//     title: "Ussd",
+//   },
+//   {
+//     to: "/payment/bank",
+//     icon: BankImg,
+//     title: "bank",
+//   },
+//   {
+//     to: "/payment/wallet",
+//     icon: WalletImg,
+//     title: "PushPay wallet",
+//   },
+// ];
 
 // const backgroundColor = isSelected ? theme.colors.primary : theme.colors.backgroundgrey;
 
 const PaySide = () => {
-  // const activePath = window.location.pathname;
+  const activePath = window.location.pathname.split("/")[1].toLowerCase();
 
 //   const [selectedValues, setSelectedValues] = useState([]);
 
@@ -55,7 +56,7 @@ const PaySide = () => {
           </Link>
         </li>
         <li className="liClass">
-          <Link className="links" to="/payment/bank">
+          <Link className="links" style={{backgroundColor: activePath === "bank" ? "red" : "none"}} to="/payment/bank"> 
             <BankImg style={{ marginRight: ".5rem" }} />
             <span style={{ fontSize: ".8rem" }}>Bank</span>
           </Link>

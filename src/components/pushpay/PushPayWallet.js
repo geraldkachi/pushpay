@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react' //, { useState } 
 import {Input, Label, FormGroup ,Button } from 'reactstrap';
 import { useFormik } from "formik";
 import * as Yup from "yup"
@@ -7,9 +7,9 @@ import { useHistory } from "react-router-dom"
 
 const PushPayWallet = () => {
 
-    const [dropdownOpen, setOpen] = useState(false)
+    // const [dropdownOpen, setOpen] = useState(false)
 
-    const toggle = () => setOpen(!dropdownOpen)
+    // const toggle = () => setOpen(!dropdownOpen)
 
     const history = useHistory()
 
@@ -19,7 +19,8 @@ const PushPayWallet = () => {
           number:'',
           date: '',
         },
-        onSubmit: ({email, number, date, setSubmitting  }) => {
+        // setSubmitting
+        onSubmit: ({email, number, date,  }) => {
           console.log( `Email: ${email}, Card Number: ${number}, Date: ${date}`)
           setTimeout(function(){ 
             <div><span class="spinner-border spinner-border-sm mr-1"></span> Please wait</div>
