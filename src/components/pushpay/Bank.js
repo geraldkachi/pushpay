@@ -15,7 +15,7 @@ const Bank = () => {
     React.useEffect(() => {
       setPaymentContext({...PaymentContext, channel: "bank"})
       // eslint-disable-next-line
-    }, [])
+    }, [setPaymentContext])
 
   const [dropdownOpen, setOpen] = useState(false)
 

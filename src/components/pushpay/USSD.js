@@ -35,7 +35,7 @@ const USSD = () => {
             console.log(setPaymentContext({...PaymentContext, channel: "ussd", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges})
             );
             // eslint-disable-next-line
-        }, [])
+        }, [setPaymentContext])
 
     const [dropdownOpen, setOpen] = useState(false)
 
