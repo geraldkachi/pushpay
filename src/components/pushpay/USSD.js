@@ -100,7 +100,7 @@ const USSD = () => {
                     <p style={{fontSize: "25px", fontFamily: "Work Sans"}}>{options.find(option => option.bank === render.bank)?.ussd}*{countThree}*{count}#</p>
 
                     <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3 border-0 mt-5">
-                        {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
+                       Pay NGN {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
                     </Button>
                 </div>
                 )}

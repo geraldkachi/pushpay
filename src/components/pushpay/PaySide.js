@@ -36,7 +36,7 @@ import { SideStyle } from "./styled";
 // const backgroundColor = isSelected ? theme.colors.primary : theme.colors.backgroundgrey;
 
 const PaySide = () => {
-  const activePath = window.location.pathname.split("/")[1].toLowerCase();
+  const activePath = window.location.pathname.split("/")[0].toLowerCase();
 
 //   const [selectedValues, setSelectedValues] = useState([]);
 
@@ -56,7 +56,7 @@ const PaySide = () => {
           </Link>
         </li>
         <li className="liClass">
-          <Link className="links" style={{backgroundColor: activePath === "bank" ? "red" : "none"}} to="/payment/bank"> 
+          <Link className="links" style={{backgroundColor: activePath === "bank" ? "#2335ed" : "none"}} to="/payment/bank"> 
             <BankImg style={{ marginRight: ".5rem" }} />
             <span style={{ fontSize: ".8rem" }}>Bank</span>
           </Link>
