@@ -1,5 +1,10 @@
-import { useState,useEffect } from "react";
+import React, { useState,useEffect
+    // , useContext 
+ } from "react";
 import { Input } from "reactstrap"
+// import { CartContext } from '../../ContextProvider';
+// import { paymentFormular } from "../paymentsFormula";
+
 
 const USSD = () => {
 
@@ -22,12 +27,18 @@ const USSD = () => {
             }
         ]
 
+    // const [PaymentContext, setPaymentContext] = useContext(CartContext);
+
+
+    // useEffect(() => {
+    //     setPaymentContext({...PaymentContext, channel: "ussd"})
+    // }, [])
 
    
 
     const [dropdownOpen, setOpen] = useState(false)
 
-    const toggle = () => setOpen(!dropdownOpen)
+    const toggle = () => setOpen(!dropdownOpen) 
 
     ///
     const [render, setRender] = useState(null)
@@ -51,6 +62,8 @@ const USSD = () => {
         }
     }, [render])
 
+
+
     return (
         <div>
             <div className="mx-3" style={{fontSize:"10px", color:'#23609E', fontFamily: 'Work Sans'}}> 
@@ -62,7 +75,7 @@ const USSD = () => {
                 <span>
                     <Input type="select" name="backdrop" id="backdrop" onChange={onChange} 
                         // onChange={changeBackdrop}
-                        className="d-flex border border-1 my-3" placeholder="Pick here to choose" caret onClick={toggle} style={{borderColor:"none",boxShadow:'none', borderRadius: "20px"}}>
+                        className="d-flex border border-1 my-3" placeholder="Pick here to choose" onClick={toggle} style={{borderColor:"none",boxShadow:'none', borderRadius: "20px"}}>
                         <option className="" value="true">Pick here to choose</option>
                         <option className="" value="true">United Bank for Africa</option>
                         <option className="" value="false">Zenith Bank</option>
@@ -84,6 +97,8 @@ const USSD = () => {
             {showData &&(
                 <div className="mx-auto text-center mt-5">
                     <p style={{fontSize: "25px", fontFamily: "Work Sans"}}>{options.find(option => option.bank === render.bank)?.ussd}*{countThree}*{count}#</p>
+
+                    {/* <p className="mt-5">{paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}</p> */}
                 </div>
                 )}
 
@@ -94,7 +109,7 @@ const USSD = () => {
                 ))}
             </select> */}
 
-        </div>
+        </div> 
     )
 }
 

@@ -14,38 +14,39 @@ import "./payment.css"
 import { MainRou, PowerRad } from "./styled"
 import PaySide from "./PaySide"
 import { paymentFormular } from '../paymentsFormula';
+// import { paymentFormular } from '../paymentsFormula';
 
 
 const PaymentMethod = () => {
   const [PaymentContext] = React.useContext(CartContext);
-  // const [routes, setRoutes] = React.useState(null)
 
-  const routes = [
+
+  const [routes] = React.useState([
     {
       path: "/payment/card",
       exact: true,
-      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt(PaymentContext?.amount)}</p>,
       main: () => <Card />,
-    },
+    },  
     {  
       path: "/payment/ussd",
       exact: true,
-      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN 30.00</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt(PaymentContext?.amount)}</p>,
       main: () => <USSD />,
     },
     {
       path: "/payment/bank",
       exact: true,
-      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN 20.00</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt(PaymentContext?.amount)}</p>,
       main: () => <Bank/>,
     },
     {
       path: "/payment/wallet",
       exact: true,
-      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN 10.00</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt(PaymentContext?.amount)}</p>,
       main: () => <PushPayWallet/>,
     },
-  ];
+  ])
 
 
     return (

@@ -56,7 +56,7 @@ const Stech = () => {
           setShowData(false)
           setTimeout(function(){ 
             
-            //<div><span class="spinner-border spinner-border-sm mr-1"></span> Please wait</div>
+            //<div><span className="spinner-border spinner-border-sm mr-1"></span> Please wait</div>
             history.push('/payment/card')
 
          }, 2000)
@@ -128,7 +128,7 @@ const Stech = () => {
 
             {!showData && (
                <Button type="submit" style={paybtn} onChange={onChange} className="text-center btn-block mx-auto px-5 fs-3">
-               <span class="spinner-border spinner-border-sm mr-1"></span>Please...
+               <span className="spinner-border spinner-border-sm mr-1"></span>Please...
              </Button>
             )}
 

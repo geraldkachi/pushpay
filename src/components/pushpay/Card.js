@@ -4,25 +4,27 @@ import { useFormik } from "formik";
 import * as Yup from "yup"
 import { useHistory } from "react-router-dom"
 import { CartContext } from '../../ContextProvider';
+import { paymentFormular } from '../paymentsFormula';
+// import { max } from 'moment';
 
 
 const Card = () => {
     const [PaymentContext, setPaymentContext] = React.useContext(CartContext);
 
     React.useEffect(() => {
-        setPaymentContext({...PaymentContext, channel: "card"})
+        setPaymentContext({...PaymentContext, channel: "card", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges - PaymentContext?.amount})
     }, [])
 
     const history = useHistory()
 
     const {handleSubmit, handleChange, values, touched, errors, handleBlur} = useFormik({
         initialValues: {
-          email: '',
+          cvv: '',
           number:'',
           date: '',
         },
-        onSubmit: ({email, number, date, setSubmitting  }) => {
-          console.log( `Email: ${email}, Card Number: ${number}, Date: ${date}`)
+        onSubmit: ({cvv, number, date, setSubmitting  }) => {
+          console.log( `CVV: ${cvv}, Card Number: ${number}, Date: ${date}`)
           setTimeout(function(){ 
             <div><span class="spinner-border spinner-border-sm mr-1"></span> Please wait</div>
             history.push('/payment/card')
@@ -32,7 +34,7 @@ const Card = () => {
         validationSchema: Yup.object().shape({
           number: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
           date: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
-          email: Yup.string().email('Invalid email').required(''),    
+          cvv: Yup.string().min(2, 'Too Short').max(3, 'Too Long!').required(''),    
         })
       })
 
@@ -66,10 +68,10 @@ const Card = () => {
                         </div>
                         <div className="col-sm-6">
                         <FormGroup>
-                            <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="email">CVV</Label>
-                            <Input maxLength="3" style={input} placeholder="CVV" id="email" type="email" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} />
+                            <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="cvv">CVV</Label>
+                            <Input maxLength={3} style={input} placeholder="CVV" id="cvv" type="number" name="cvv" value={values.cvv} onChange={handleChange} onBlur={handleBlur} />
                         </FormGroup>
-                        {touched.email && errors.email ? (<div className='text-danger'>{errors.email}</div>) : (null)}
+                        {touched.cvv && errors.cvv ? (<div className='text-danger'>{errors.cvv}</div>) : (null)}
                     </div>
                 </div>
 
@@ -77,7 +79,7 @@ const Card = () => {
                     <div className="col-md">
                         <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3 border-0">
                         {/* <span class="spinner-border spinner-border-sm mr-1"></span> */}
-                            Pay NGN 150
+                            Pay NGN {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
                         </Button>
                     </div>
                 </div>

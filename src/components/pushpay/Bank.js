@@ -3,9 +3,19 @@ import React, { useState, useEffect } from 'react'
 import {Input, Label, FormGroup ,Button } from 'reactstrap';
 import { useFormik } from "formik";
 import * as Yup from "yup"
+import { CartContext } from '../../ContextProvider';
+import { paymentFormular } from '../paymentsFormula';
 
 
 const Bank = () => {
+
+
+  const [PaymentContext, setPaymentContext] = React.useContext(CartContext);
+
+    React.useEffect(() => {
+        setPaymentContext({...PaymentContext, channel: "bank"})
+    }, [])
+
   const [dropdownOpen, setOpen] = useState(false)
 
   const toggle = () => setOpen(!dropdownOpen)
@@ -61,7 +71,7 @@ const Bank = () => {
             <div className="justify-content-center align-items-center" onChange={onChange}>
                 <span>
                     <Input type="select" name="backdrop" id="backdrop" 
-                        className="d-flex border border-1 my-3" placeholder="Pick here to choose" caret onClick={toggle} style={{borderColor:"none",boxShadow:'none', borderRadius: "20px"}}>
+                        className="d-flex border border-1 my-3" placeholder="Pick here to choose" onClick={toggle} style={{borderColor:"none",boxShadow:'none', borderRadius: "20px"}}>
                         <option className="" value="true">Pick here to choose</option>
                         <option className="" value="true">United Bank for Africa</option>
                         <option className="" value="false">Zenith Bank</option>
@@ -98,7 +108,7 @@ const Bank = () => {
                           <div className="col-md px-0 mx-0">
                               <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3 border-0">
                               {/* <span class="spinner-border spinner-border-sm mr-1"></span> */}
-                                  Pay NGN 150
+                                Pay NGN {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
                               </Button>
                           </div>
                   </form>

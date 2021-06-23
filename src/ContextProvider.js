@@ -5,7 +5,7 @@ import { paymentFormular } from "./components/paymentsFormula";
 export const CartContext = createContext();
 
 const ContextProvider = ({ children }) => {
-  const [paymentconst, setPayment] = useState({amount: 0, channel: "", processingFee: 0});
+  const [paymentconst, setPayment] = useState({amount: 0, channel: null, processingFee: 0});
 
   return (
     <CartContext.Provider value={[paymentconst, setPayment]}>

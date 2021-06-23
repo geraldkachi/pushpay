@@ -3,6 +3,8 @@ import {Input, Label, FormGroup ,Button } from 'reactstrap';
 import { useFormik } from "formik";
 import * as Yup from "yup"
 import { useHistory } from "react-router-dom"
+import { paymentFormular } from '../paymentsFormula';
+import { CartContext } from '../../ContextProvider';
 
 
 const PushPayWallet = () => {
@@ -10,6 +12,12 @@ const PushPayWallet = () => {
     // const [dropdownOpen, setOpen] = useState(false)
 
     // const toggle = () => setOpen(!dropdownOpen)
+
+    const [PaymentContext, setPaymentContext] = React.useContext(CartContext);
+
+    React.useEffect(() => {
+        setPaymentContext({...PaymentContext, channel: "wallet"})
+    }, [])
 
     const history = useHistory()
 
@@ -58,7 +66,7 @@ const PushPayWallet = () => {
                         <div className="col-md px-0 mx-0">
                             <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3 border-0">
                             {/* <span class="spinner-border spinner-border-sm mr-1"></span> */}
-                                Pay NGN 150
+                                Pay NGN {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
                             </Button>
                         </div>
                 </form>
