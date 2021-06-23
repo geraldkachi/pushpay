@@ -6,8 +6,13 @@ import { ReactComponent as HashImg } from "./img/hash.svg";
 import { ReactComponent as BankImg } from "./img/bank.svg";
 import { ReactComponent as WalletImg } from "./img/wallet.svg";
 
-import { Link } from "react-router-dom";
-import { SideStyle } from "./styled";
+import styled from "styled-components";
+
+
+import { Link, 
+  // useHistory
+ } from "react-router-dom";
+// import { SideStyle } from "./styled";
 // import Pay from "./Pay";
 
 // const slideprops = [
@@ -33,12 +38,80 @@ import { SideStyle } from "./styled";
 //   },
 // ];
 
-// const backgroundColor = isSelected ? theme.colors.primary : theme.colors.backgroundgrey;
-
 const PaySide = () => {
-  const activePath = window.location.pathname.split("/")[0].toLowerCase();
+  // const activePath = window.location.pathname.split("/payment/")[0].toLowerCase();
+  // const currentRoute = useHistory().location.pathname.toLowerCase();
+  
+  //   const [selectedValues, setSelectedValues] = useState([]);
+  
+  const colors = {
+    back: "#2335ed",
+    front: null,
+    // backcolor: currentRoute             // background: ${backcolor.currentRoute === "/payment/bank" ? "#2335ed" : ""};
+  };
+  
+  const SideStyle = styled.div`
 
-//   const [selectedValues, setSelectedValues] = useState([]);
+      ul {
+        padding-left: 0;
+        li {
+          list-style: none;
+          align-items: center;
+          li:hover {
+            color: white;
+          }
+          .links {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-weight: 500px;
+            padding: 8px 5px;
+            color: #56799D;
+            &:hover {
+              color: white;
+              background: "#2335ed";
+              border-radius: 10px;
+            }
+            span {
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+
+        // ul {
+        //   padding-left: 0;
+        //   li {
+        //     list-style: none;
+        //     align-items: center;
+        //     li:hover {
+        //       color: white;
+        //     }
+
+        //     .links {
+        //       text-decoration: none;
+        //       display: flex;
+        //       align-items: center;
+        //       font-weight: 500px;
+        //       padding: 8px 5px;
+        //       margin: 3px 0;
+        //       color: #56799d;
+        //       &:hover {
+        //         color: white;
+        //         // background: #2335ed;
+        //         background: ${colors.back};
+        //         border-radius: 10px;
+        //       }
+        //       &:isactive {
+        //         background: #2335ed;
+        //       }
+        //       span {
+        //         margin-left: 5px;
+        //       }
+        //     }
+        //   }
+        // }
+      `;
 
   return (
     <SideStyle>
@@ -50,13 +123,13 @@ const PaySide = () => {
           </Link>
         </li>
         <li className="liClass">
-          <Link className="links" to="/payment/Ussd">
+          <Link className="links" to="/payment/ussd">
             <HashImg style={{ marginRight: ".5rem" }} />
             <span style={{ fontSize: ".8rem" }}>USSD</span>
           </Link>
         </li>
         <li className="liClass">
-          <Link className="links" style={{backgroundColor: activePath === "bank" ? "#2335ed" : "none"}} to="/payment/bank"> 
+          <Link className="links" to="/payment/bank"> 
             <BankImg style={{ marginRight: ".5rem" }} />
             <span style={{ fontSize: ".8rem" }}>Bank</span>
           </Link>

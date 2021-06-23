@@ -41,7 +41,6 @@ const USSD = () => {
 
     const toggle = () => setOpen(!dropdownOpen)
 
-    ///
     const [render, setRender] = useState(null)
     const [showData, setShowData] = useState(false)
     const [count,setCount] = useState(0)
