@@ -17,6 +17,7 @@ const PushPayWallet = () => {
 
     React.useEffect(() => {
         setPaymentContext({...PaymentContext, channel: "wallet"})
+            // eslint-disable-next-line
     }, [])
 
     const history = useHistory()
