@@ -1,9 +1,7 @@
-import React, { useState,useEffect
-    // , useContext 
- } from "react";
-import { Input } from "reactstrap"
-// import { CartContext } from '../../ContextProvider';
-// import { paymentFormular } from "../paymentsFormula";
+import React, { useState,useEffect } from "react";
+import { Input, Button } from "reactstrap"
+import { CartContext } from '../../ContextProvider';
+import { paymentFormular } from '../paymentsFormula';
 
 
 const USSD = () => {
@@ -27,18 +25,21 @@ const USSD = () => {
             }
         ]
 
-    // const [PaymentContext, setPaymentContext] = useContext(CartContext);
+        
 
+        const [PaymentContext, setPaymentContext] = React.useContext(CartContext);
 
-    // useEffect(() => {
-    //     setPaymentContext({...PaymentContext, channel: "ussd"})
-    // }, [])
-
-   
+        React.useEffect(() => {
+            //  {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
+            setPaymentContext({...PaymentContext, channel: "ussd", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges })
+            console.log(setPaymentContext({...PaymentContext, channel: "ussd", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges})
+            );
+            // eslint-disable-next-line
+        }, [])
 
     const [dropdownOpen, setOpen] = useState(false)
 
-    const toggle = () => setOpen(!dropdownOpen) 
+    const toggle = () => setOpen(!dropdownOpen)
 
     ///
     const [render, setRender] = useState(null)
@@ -98,7 +99,9 @@ const USSD = () => {
                 <div className="mx-auto text-center mt-5">
                     <p style={{fontSize: "25px", fontFamily: "Work Sans"}}>{options.find(option => option.bank === render.bank)?.ussd}*{countThree}*{count}#</p>
 
-                    {/* <p className="mt-5">{paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}</p> */}
+                    <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3 border-0 mt-5">
+                        {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
+                    </Button>
                 </div>
                 )}
 
@@ -109,8 +112,23 @@ const USSD = () => {
                 ))}
             </select> */}
 
-        </div> 
+        </div>
     )
+}
+
+const paybtn = {
+    // width: "100%",
+    backgroundColor: "#3bb75e",
+    color: "#fff",
+    cursor: "pointer",
+    border: "none",
+    fontSize:".9rem",
+    outline: "none",
+    // padding: "1.5rem",
+    borderRadius: "20px",
+    marginTop: "2.5rem",
+    fontFamily: 'Work Sans',
+    padding: ".5rem"
 }
 
 export default USSD

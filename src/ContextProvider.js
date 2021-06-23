@@ -1,6 +1,6 @@
-import React, { createContext, useState, useEffect } from "react";
-import axios from "axios";
-import { paymentFormular } from "./components/paymentsFormula";
+import React, { createContext, useState } from "react";
+// import axios from "axios";
+// import { paymentFormular } from "./components/paymentsFormula";
 
 export const CartContext = createContext();
 

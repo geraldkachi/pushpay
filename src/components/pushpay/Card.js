@@ -12,10 +12,14 @@ const Card = () => {
     const [PaymentContext, setPaymentContext] = React.useContext(CartContext);
 
     React.useEffect(() => {
-        setPaymentContext({...PaymentContext, channel: "card", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges - PaymentContext?.amount})
+        //  {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
+        setPaymentContext({...PaymentContext, channel: "card", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges })
+        console.log(setPaymentContext({...PaymentContext, channel: "card", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges})
+        );
+        // eslint-disable-next-line
     }, [])
 
-    const history = useHistory()
+    const history = useHistory()   
 
     const {handleSubmit, handleChange, values, touched, errors, handleBlur} = useFormik({
         initialValues: {
@@ -69,7 +73,7 @@ const Card = () => {
                         <div className="col-sm-6">
                         <FormGroup>
                             <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="cvv">CVV</Label>
-                            <Input maxLength={3} style={input} placeholder="CVV" id="cvv" type="number" name="cvv" value={values.cvv} onChange={handleChange} onBlur={handleBlur} />
+                            <Input maxLength="3" style={input} placeholder="CVV" id="cvv" type="number" name="cvv" value={values.cvv} onChange={handleChange} onBlur={handleBlur} />
                         </FormGroup>
                         {touched.cvv && errors.cvv ? (<div className='text-danger'>{errors.cvv}</div>) : (null)}
                     </div>

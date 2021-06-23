@@ -37,9 +37,9 @@ const PushPayWallet = () => {
          }, 2000)
         },
         validationSchema: Yup.object().shape({
-          number: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
+          number: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!'),
           date: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
-          email: Yup.string().email('Invalid email').required(''),    
+          email: Yup.string().email('Invalid email').required(''),
         })
       })
 
@@ -58,7 +58,7 @@ const PushPayWallet = () => {
                             <FormGroup>
                                 <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="Card Number">Card number</Label>
                             </FormGroup>
-                                <Input style={input} placeholder="pp9012345678" id="number" type="text" name="number" value={values.number} onChange={handleChange} onBlur={handleBlur} />  
+                                <Input style={input} placeholder="pp9012345678" id="number" type="number" name="number" value={values.number} onChange={handleChange} onBlur={handleBlur} />  
                             {touched.number && errors.number ? (<div className='text-danger'>{errors.number}</div>) : (null)}
                         </div>
 

@@ -122,7 +122,8 @@ const Stech = () => {
 
           {showData && (
               <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3">
-                Pay NGN 1,000.00
+                {/* Pay NGN 1,000.00 */}
+                AMOUNT
               </Button>
             )}
 
