@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-const colors = {
-  back: "#2335ed",
-  front: null,
-};
-
 export const SideStyle = styled.div`
 
 ul {
@@ -54,7 +49,7 @@ ul {
   //       &:hover {
   //         color: white;
   //         // background: #2335ed;
-  //         background: ${colors.back};
+  //         background: #2335ed;
   //         border-radius: 10px;
   //       }
   //       &:isactive {
