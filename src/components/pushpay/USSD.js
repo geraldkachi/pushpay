@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import { Input, Button } from "reactstrap"
-import { CartContext } from '../../ContextProvider';
+import { PushContext } from '../../ContextProvider';
 import { paymentFormular } from '../paymentsFormula';
 
 
@@ -27,15 +27,15 @@ const USSD = () => {
 
         
 
-        const [PaymentContext, setPaymentContext] = React.useContext(CartContext);
-
+        const [PaymentContext, setPaymentContext] = React.useContext(PushContext);
+            console.log(PaymentContext);
         React.useEffect(() => {
             //  {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
             setPaymentContext({...PaymentContext, channel: "ussd", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges })
             console.log(setPaymentContext({...PaymentContext, channel: "ussd", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges})
             );
             // eslint-disable-next-line
-        }, [setPaymentContext])
+        }, [PaymentContext])
 
     const [dropdownOpen, setOpen] = useState(false)
 
@@ -53,9 +53,6 @@ const USSD = () => {
         setRender({ ...render, [target.name]: target.value })
         setCountThree([Math.floor((Math.floor(Math.random() * 1000) + 1))])
     }
-    // const onChangeThree = ({ target }) => {
-    // }
-
     useEffect(() => {
         if (render !== null){
             setShowData(true)

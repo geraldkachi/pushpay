@@ -3,19 +3,19 @@ import React, { useState, useEffect } from 'react'
 import {Input, Label, FormGroup ,Button } from 'reactstrap';
 import { useFormik } from "formik";
 import * as Yup from "yup"
-import { CartContext } from '../../ContextProvider';
+import { PushContext } from '../../ContextProvider';
 import { paymentFormular } from '../paymentsFormula';
 
 
 const Bank = () => {
 
 
-  const [PaymentContext, setPaymentContext] = React.useContext(CartContext);
+  const [PaymentContext, setPaymentContext] = React.useContext(PushContext);
 
     React.useEffect(() => {
       setPaymentContext({...PaymentContext, channel: "bank"})
       // eslint-disable-next-line
-    }, [setPaymentContext])
+    }, [PaymentContext])
 
   const [dropdownOpen, setOpen] = useState(false)
 

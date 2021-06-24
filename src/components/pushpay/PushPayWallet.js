@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup"
 import { useHistory } from "react-router-dom"
 import { paymentFormular } from '../paymentsFormula';
-import { CartContext } from '../../ContextProvider';
+import { PushContext } from '../../ContextProvider';
 
 
 const PushPayWallet = () => {
@@ -13,12 +13,12 @@ const PushPayWallet = () => {
 
     // const toggle = () => setOpen(!dropdownOpen)
 
-    const [PaymentContext, setPaymentContext] = React.useContext(CartContext);
+    const [PaymentContext, setPaymentContext] = React.useContext(PushContext);
 
     React.useEffect(() => {
         setPaymentContext({...PaymentContext, channel: "wallet"})
             // eslint-disable-next-line
-    }, [setPaymentContext])
+    }, [PaymentContext])
 
     const history = useHistory()
 

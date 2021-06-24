@@ -3,13 +3,13 @@ import {Input, Label, FormGroup ,Button } from 'reactstrap';
 import { useFormik } from "formik";
 import * as Yup from "yup"
 import { useHistory } from "react-router-dom"
-import { CartContext } from '../../ContextProvider';
+import { PushContext } from '../../ContextProvider';
 import { paymentFormular } from '../paymentsFormula';
 // import { max } from 'moment';
 
 
 const Card = () => {
-    const [PaymentContext, setPaymentContext] = React.useContext(CartContext);
+    const [PaymentContext, setPaymentContext] = React.useContext(PushContext);
 
     React.useEffect(() => {
         //  {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
@@ -17,7 +17,7 @@ const Card = () => {
         console.log(setPaymentContext({...PaymentContext, channel: "card", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges})
         );
         // eslint-disable-next-line
-    }, [])
+    }, [PaymentContext])
 
     const history = useHistory()   
 

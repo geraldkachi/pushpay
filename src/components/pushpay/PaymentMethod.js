@@ -1,11 +1,8 @@
 import React from 'react'
-// import PushPayWallet from './PushPayWallet';
-// import USSD from './USSD';
-// import Card from './Card';
-// import Bank from './Bank';
+
 import {ReactComponent as  PushImg } from  "./img/pushpay.svg"
 import {ReactComponent as  Thund } from  "./img/thund.svg"
-// import { CartContext } from '../../ContextProvider';con
+// import { PushContext } from '../../ContextProvider';
 
 
 import { SideStyle } from "./styled";
@@ -21,42 +18,12 @@ import "./payment.css"
 
 import { MainRou, PowerRad } from "./styled"
 // import PaySide from "./PaySide"
-// import { paymentFormular } from '../paymentsFormula';
-// import { paymentFormular } from '../paymentsFormula';
-
-
-// const routes = [
-//   {
-//     path: "/payment/card",
-//     exact: true,
-//     sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
-//     main: () => <Card />,
-//   },  
-//   {  
-//     path: "/payment/ussd",
-//     exact: true,
-//     sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
-//     main: () => <USSD />,
-//   },
-//   {
-//     path: "/payment/bank",
-//     exact: true,
-//     sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
-//     main: () => <Bank/>,
-//   },
-//   {
-//     path: "/payment/wallet",
-//     exact: true,
-//     sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
-//     main: () => <PushPayWallet/>,
-//   },  
-// ]
 
 const PaymentMethod = ({ routes }) => {
 
   const currentRoute = useHistory().location.pathname.toLowerCase();
 
-  // const [PaymentContext] = React.useContext(CartContext);
+  // const [PaymentContext] = React.useContext(PushContext);
 
 
     return (
@@ -76,25 +43,25 @@ const PaymentMethod = ({ routes }) => {
            <SideStyle>
               <ul className="list-unstyled list">
                 <li className="liClass">
-                  <Link className="links" style={{backgroundColor: currentRoute === "/payment/" ? "#2335ed" : "", borderRadius:'100px'}} to="/payment/card">
+                  <Link className="links" style={{backgroundColor: currentRoute === "/payment/" ? "#2335ed" : "", borderRadius:'10px'}} to="/payment/card">
                     <CardImg style={{ marginRight: ".5rem" }} />
                     <span style={{ fontSize: ".8rem" }}>Card</span>
                   </Link>
                 </li>
                 <li className="liClass">
-                  <Link className="links" style={{backgroundColor: currentRoute === "/payment/ussd" ? "#2335ed" : "", borderRadius:'100px'}} to="/payment/ussd">
+                  <Link className="links" style={{backgroundColor: currentRoute === "/payment/ussd" ? "#2335ed" : "", borderRadius:'10px'}} to="/payment/ussd">
                     <HashImg style={{ marginRight: ".5rem" }} />
                     <span style={{ fontSize: ".8rem" }}>USSD</span>
                   </Link>
                 </li>
                 <li className="liClass">
-                  <Link className="links" style={{backgroundColor: currentRoute === "/payment/bank" ? "#2335ed" : "", borderRadius:'100px'}} to="/payment/bank"> 
+                  <Link className="links" style={{backgroundColor: currentRoute === "/payment/bank" ? "#2335ed" : "", borderRadius:'10px'}} to="/payment/bank"> 
                     <BankImg style={{ marginRight: ".5rem" }} />
                     <span style={{ fontSize: ".8rem" }}>Bank</span>
                   </Link>
                 </li>
                 <li className="liClass">
-                  <Link className="links" style={{backgroundColor: currentRoute === "/payment/wallet" ? "#2335ed" : "", borderRadius:'100px'}} to="/payment/wallet">
+                  <Link className="links" style={{backgroundColor: currentRoute === "/payment/wallet" ? "#2335ed" : "", borderRadius:'10px'}} to="/payment/wallet">
                     <WalletImg style={{ marginRight: ".5rem" }} />
                     <span style={{ fontSize: ".8rem" }}>PushPay wallet</span>
                   </Link>

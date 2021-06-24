@@ -6,8 +6,9 @@ import { ReactComponent as HashImg } from "./img/hash.svg";
 import { ReactComponent as BankImg } from "./img/bank.svg";
 import { ReactComponent as WalletImg } from "./img/wallet.svg";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Switch, Route } from "react-router-dom";
 import { SideStyle } from "./styled";
+
 // import Pay from "./Pay";
 
 // const slideprops = [
@@ -39,7 +40,34 @@ const PaySide = () => {
   // const activePath = window.location.pathname.split("/")[0].toLowerCase();
   const currentRoute = useHistory().location.pathname.toLowerCase();
 
-//   const [selectedValues, setSelectedValues] = useState([]);
+      // const [selectedValues, setSelectedValues] = useState([]);
+
+    const routes = [
+      {
+        path: "/payment/card",
+        exact: true,
+        sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
+        main: () => <Card />,
+      },  
+      {  
+        path: "/payment/ussd",
+        exact: true,
+        sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
+        main: () => <USSD />,
+      },
+      {
+        path: "/payment/bank",
+        exact: true,
+        sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
+        main: () => <Bank/>,
+      },
+      {
+        path: "/payment/wallet",
+        exact: true,
+        sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
+        main: () => <PushPayWallet/>,
+      },  
+    ]
 
   return (
     <SideStyle>
@@ -51,7 +79,7 @@ const PaySide = () => {
           </Link>
         </li>
         <li className="liClass">
-          <Link className="links" style={{backgroundColor: currentRoute === "/payment/ussd" ? "#2335ed" : "", borderRadius:'10px'}} to="/payment/ussd">
+          <Link className="links" style={{backgroundColor: currentRoute === "/payment/ussd" ? "#2ed" : "", borderRadius:'10px'}} to="/payment/ussd">
             <HashImg style={{ marginRight: ".5rem" }} />
             <span style={{ fontSize: ".8rem" }}>USSD</span>
           </Link>
@@ -68,8 +96,8 @@ const PaySide = () => {
             <span style={{ fontSize: ".8rem" }}>PushPay wallet</span>
           </Link>
         </li>
+        <div className="bg-danger"></div>
       </ul>
-      
     </SideStyle>
   );
 };

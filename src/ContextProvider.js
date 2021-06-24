@@ -2,13 +2,12 @@ import React, { createContext,
   // useReducer, 
   useState } from "react";
 
-// import axios from "axios";
 // import { paymentFormular } from "./components/paymentsFormula";
 
 // import { paymentReducer } from "./PayProvider";
 
 
-export const CartContext = createContext();
+export const PushContext = createContext(); 
 
 const ContextProvider = ({ children }) => {
   const [paymentconst, setPayment] = useState({amount: 0, channel: null, processingFee: 0});
@@ -25,22 +24,22 @@ const ContextProvider = ({ children }) => {
   // }, [paymentState]);
 
   return (
-    <CartContext.Provider value={[paymentconst, setPayment]}>
+    <PushContext.Provider value={[paymentconst, setPayment]}>
       {children}
-    </CartContext.Provider> 
+    </PushContext.Provider> 
   );
 };
 
 export default ContextProvider;
 
-// export const CartContext = createContext();
+// export const PushContext = createContext();
 
 // const ContextProvider = ({ children }) => {
 //   const [paymentconst, setPayment] = useState({amount: 0, channel: null, processingFee: 0});
 
 //   return (
-//     <CartContext.Provider value={[paymentconst, setPayment]}>
+//     <PushContext.Provider value={[paymentconst, setPayment]}>
 //       {children}
-//     </CartContext.Provider>
+//     </PushContext.Provider>
 //   );
 // };

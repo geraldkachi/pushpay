@@ -5,7 +5,7 @@ import * as Yup from "yup"
 import { useHistory } from "react-router-dom"
 // import { withRouter } from 'react-router-dom'
 import {ReactComponent as PushP} from "./img/pushp.svg"
-import { CartContext } from '../../ContextProvider';
+import { PushContext } from '../../ContextProvider';
 
 const Stech = () => {
 
@@ -13,7 +13,7 @@ const Stech = () => {
 
   const [render, setRender] = useState(null)
   const [showData, setShowData] = useState(true)
-  const [paymentInfo, setPaymentInfo] = useContext(CartContext)
+  const [paymentInfo, setPaymentInfo] = useContext(PushContext)
 
   const onChange = ({ target }) => {
     setRender({ ...render, [target.name]: target.value }) 
@@ -47,34 +47,27 @@ const Stech = () => {
           lastname: '',
           number: ""
         },
-
-
-        // setSubmitting
         onSubmit: ({email, firstname, lastname, number }) => {
           console.log( `Email: ${email}, Firstname: ${firstname}, Lastname: ${lastname}, Amount: ${number} `)
           setPaymentInfo({...paymentInfo, amount: number})
           setShowData(false)
           setTimeout(function(){ 
-            
-            //<div><span className="spinner-border spinner-border-sm mr-1"></span> Please wait</div>
             history.push('/payment/card')
-
-         }, 2000)
+         }, 1500)
         },
         validationSchema: Yup.object().shape({
           email: Yup.string().email('Invalid email').required(''),    
           firstname: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
           lastname: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
+          // number: Yup.string().min(1, 'Too Short!').max(50, 'Too Long!').required(''),
+          // number: Yup.number().min(10).max(10, 'Too Long!').required(),
+          // number: Yup.string().test('len', 'Must be exactly 5 characters', val => val.length === 5), wrrong .lenght
+          // number: Yup.string().length(5) // this is correct... it's just exacly 5 digits
+          // ##### format zip code
+          number: Yup.string().matches(/^[0-9]{5}$/, 'Must be exactly 5 digits')
+          // number: Yup.string().matches(/^[0-9]{5}(?:-[0-9]{4})?$/, 'Must be 5 or 9 digits')
         })
       })
-
-      // const helloHandeler = () => {
-      //   setTimeout(() => {
-      //     setloading(!loading)
-      //   }, 2000)
-      //   setShow(!show);
-      // };
-       if (loading) return <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>
 
     return (
         <div className="min-vh-100 d-flex justify-content-center align-items-center mx-3">
@@ -100,7 +93,6 @@ const Stech = () => {
                       <Input style={input} placeholder="last name" id="lastname" type="text" name="lastname" value={values.lastname} onChange={handleChange} onBlur={handleBlur} />
                     </FormGroup>
                     {touched.lastname && errors.lastname ? (<div className='text-danger'>{errors.lastname}</div>) : (null)}
-
               </div>
           </div>
 
@@ -120,22 +112,18 @@ const Stech = () => {
               {touched.number && errors.number ? (<div className='text-danger'>{errors.number}</div>) : (null)}
           {/*  */}
 
-          {showData && (
-              <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3">
-                {/* Pay NGN 1,000.00 */}
-                AMOUNT
-              </Button>
-            )}
+              {showData && (
+                  <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3">
+                    {/* Pay NGN 1,000.00 */}
+                    AMOUNT
+                  </Button>
+                )}
 
-            {!showData && (
-               <Button type="submit" style={paybtn} onChange={onChange} className="text-center btn-block mx-auto px-5 fs-3">
-               <span className="spinner-border spinner-border-sm mr-1"></span>Please...
-             </Button>
-            )}
-
-            {/* <div class="spinner-border-sm text-light" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div> */}
+                {!showData && (
+                  <Button type="submit" style={paybtn} onChange={onChange} className="text-center btn-block mx-auto px-5 fs-3">
+                  <span className="spinner-border spinner-border-sm mr-1"></span>Please...
+                </Button>
+                )}
               </div>
           </div>
       </form>

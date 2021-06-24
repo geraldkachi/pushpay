@@ -1,11 +1,7 @@
 import React from "react";
-import { Route, Switch,
-  //  Redirect 
-  } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import NotFound from "./components/NotFound";
-
-
 
 import "./App.css";
 import Pushpay from "./components/pushpay/Pushpay";
@@ -15,14 +11,12 @@ import Payment from "./components/pushpay/Payment";
 const App = () => {
   return (
     <>
-      {/* <RouteNavbar /> */}
       <Switch>
         <Route exact path="/" component={Pushpay} />
         <Route exact path="/payment/card" component={Payment} />
         <Route path="/payment/ussd" component={Payment} />
         <Route path="/payment/bank" component={Payment} />
         <Route path="/payment/wallet" component={Payment} />
-
         <Route path="*" component={NotFound} />
       </Switch>  
     </>
