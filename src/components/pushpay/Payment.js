@@ -6,8 +6,12 @@ import PushPayWallet from './PushPayWallet';
 import USSD from './USSD';
 import Card from './Card';
 import Bank from './Bank';
+import { Route, Switch } from "react-router-dom";
 
-
+import { ReactComponent as CardImg } from "./img/card.svg";
+import { ReactComponent as HashImg } from "./img/hash.svg";
+import { ReactComponent as BankImg } from "./img/bank.svg";
+import { ReactComponent as WalletImg } from "./img/wallet.svg";
 
 import { BackRad, PaymentLay } from "./styled"; //ListSTyle
 import { PushContext } from "../../ContextProvider";
@@ -16,44 +20,57 @@ import { paymentFormular } from "../paymentsFormula";
 // const currentRoute = useHistory().location.pathname.toLowerCase();
 
 const Payment = () => {
-  const [PaymentContext] = React.useContext(PushContext);
-
-  const [routes] = React.useState([
+  const {PaymentContext} = React.useContext(PushContext); 
+  const routes = [
     {
-      path: "/payment/card",
+      path: "/card",
       exact: true,
       sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
       main: () => <Card />,
+      page: "card",
+      icon: <CardImg style={{ marginRight: ".5rem" }} />
     },  
     {
-      path: "/payment/ussd",
+      path: "/ussd",
       exact: true,
       sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
       main: () => <USSD />,
+      page: "ussd",
+      icon: <HashImg style={{ marginRight: ".5rem" }} />
     },
     {
-      path: "/payment/bank",
+      path: "/bank",
       exact: true,
       sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
       main: () => <Bank/>,
+      page: "bank",
+      icon: <BankImg style={{ marginRight: ".5rem" }} />
     },
     {
-      path: "/payment/wallet",
+      path: "/wallet",
       exact: true,
       sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
       main: () => <PushPayWallet/>,
+      page: "PushPay Wallet",
+      icon: <WalletImg style={{ marginRight: ".5rem" }} />
     },  
-  ])
+  ]
+
 
   return (
     <>
-      <PaymentLay className="backpay">
-        <div style={{ width: "616px" }}>
-          <BackRad className="p-4 overflow-hidden backrad">
-            <PaymentMethod {...{routes}} />
-          </BackRad>
-        </div>
-      </PaymentLay>
+    <Switch>
+        <PaymentLay className="backpay">
+          <div style={{ width: "616px" }}>
+            <BackRad className="p-4 overflow-hidden backrad">
+              <PaymentMethod {...{routes}} />
+            </BackRad>
+          </div>
+        </PaymentLay>
+       <Route path="/ussd" component={USSD} />
+        <Route path="/bank" component={Bank} />
+        <Route path="/wallet" component={PushPayWallet} />
+      </Switch>
     </>
   );
 };

@@ -21,9 +21,11 @@ import { MainRou, PowerRad } from "./styled"
 
 const PaymentMethod = ({ routes }) => {
 
-  const currentRoute = useHistory().location.pathname.toLowerCase();
+  const currentRoute = useHistory().location.pathname.toUpperCase();
 
   // const [PaymentContext] = React.useContext(PushContext);
+
+  const activePath = window.location.pathname;
 
 
     return (
@@ -38,10 +40,31 @@ const PaymentMethod = ({ routes }) => {
             </div>
 
            <div className="">
+
+               {/* {routes.map((route, index) => (
+                  <Route key={index} path={route.path} exact={route.exact}>
+                    <div className="links" className={currentRoute === item.to && "currentroute"}>
+                      {route.main}
+                    </div>
+                  </Route>
+                  ))} */}
            
            {/*  */}
            <SideStyle>
-              <ul className="list-unstyled list">
+             {routes.map((route, index) => (
+              <Link key={index} to={route.path} className={activePath === route.path && null}>
+               <ul className="list-unstyled list">
+                 <li className="liClass">
+                    {route.icon}
+                    <span style={{ fontSize: ".8rem" }}>{route.page}</span>
+                 </li>
+                 {/* {console.log(route.path)} */}
+               </ul>
+              </Link>
+             ))}
+             </SideStyle>
+
+              {/* <ul className="list-unstyled list">
                 <li className="liClass">
                   <Link className="links" style={{backgroundColor: currentRoute === "/payment/" ? "#2335ed" : "", borderRadius:'10px'}} to="/payment/card">
                     <CardImg style={{ marginRight: ".5rem" }} />
@@ -66,8 +89,8 @@ const PaymentMethod = ({ routes }) => {
                     <span style={{ fontSize: ".8rem" }}>PushPay wallet</span>
                   </Link>
                 </li>
-              </ul>
-            </SideStyle>
+              </ul> */}
+            
            {/*  */}
                 <div className="bg-white p-2" style={{borderRadius: '10px'}}>
                     <p style={{fontSize: ".9rem"}}>Processing fee</p>

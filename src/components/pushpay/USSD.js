@@ -5,6 +5,7 @@ import { paymentFormular } from '../paymentsFormula';
 
 
 const USSD = () => {
+    const [PaymentContext, setPaymentContext] = React.useContext(PushContext);
 
         const options = [
             {
@@ -27,7 +28,6 @@ const USSD = () => {
 
         
 
-        const [PaymentContext, setPaymentContext] = React.useContext(PushContext);
             console.log(PaymentContext);
         React.useEffect(() => {
             //  {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}

@@ -40,34 +40,7 @@ const PaySide = () => {
   // const activePath = window.location.pathname.split("/")[0].toLowerCase();
   const currentRoute = useHistory().location.pathname.toLowerCase();
 
-      // const [selectedValues, setSelectedValues] = useState([]);
-
-    const routes = [
-      {
-        path: "/payment/card",
-        exact: true,
-        sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
-        main: () => <Card />,
-      },  
-      {  
-        path: "/payment/ussd",
-        exact: true,
-        sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
-        main: () => <USSD />,
-      },
-      {
-        path: "/payment/bank",
-        exact: true,
-        sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
-        main: () => <Bank/>,
-      },
-      {
-        path: "/payment/wallet",
-        exact: true,
-        sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
-        main: () => <PushPayWallet/>,
-      },  
-    ]
+      // const [selectedValues, setSelectedValues] = useState([])
 
   return (
     <SideStyle>

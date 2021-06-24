@@ -61,12 +61,22 @@ const Stech = () => {
           lastname: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
           // number: Yup.string().min(1, 'Too Short!').max(50, 'Too Long!').required(''),
           // number: Yup.number().min(10).max(10, 'Too Long!').required(),
-          // number: Yup.string().test('len', 'Must be exactly 5 characters', val => val.length === 5), wrrong .lenght
-          // number: Yup.string().length(5) // this is correct... it's just exacly 5 digits
+          // number: Yup.string().length(7).required() // this is correct... it's just exacly 5 digits
+          number: Yup.string().min(5).max(10, 'Too Long! max is 10').required() // this is correct... it's just exacly 5 digits
           // ##### format zip code
-          number: Yup.string().matches(/^[0-9]{5}$/, 'Must be exactly 5 digits')
-          // number: Yup.string().matches(/^[0-9]{5}(?:-[0-9]{4})?$/, 'Must be 5 or 9 digits')
-        })
+          // number: Yup.string().matches(/^[0-9]{5}$/, 'Must be exactly 5 digits').required()
+          // number: Yup.string().matches(/^[0-9]{5}(?:-[0-9]{4})?$/, 'Must be 5 or 9 digits').required()
+
+              //   let schema = yup.object().shape({
+              //     name: yup.string().required(),
+              //     age: yup.number().required().positive().integer(),
+              //     email: yup.string().email(),
+              //     website: yup.string().url(),
+              //     createdOn: yup.date().default(function () {
+              //       return new Date();
+              //     }),
+              //   });
+          })
       })
 
     return (

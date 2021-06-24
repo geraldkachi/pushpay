@@ -14,8 +14,7 @@ const Card = () => {
     React.useEffect(() => {
         //  {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
         setPaymentContext({...PaymentContext, channel: "card", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges })
-        console.log(setPaymentContext({...PaymentContext, channel: "card", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges})
-        );
+        // console.log(setPaymentContext({...PaymentContext, channel: "card", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges}));
         // eslint-disable-next-line
     }, [PaymentContext])
 
