@@ -7,21 +7,25 @@ import {ReactComponent as  Thund } from  "./img/thund.svg"
 
 import { SideStyle } from "./styled";
 
-import { ReactComponent as CardImg } from "./img/card.svg";
-import { ReactComponent as HashImg } from "./img/hash.svg";
-import { ReactComponent as BankImg } from "./img/bank.svg";
-import { ReactComponent as WalletImg } from "./img/wallet.svg";
+// import { ReactComponent as CardImg } from "./img/card.svg";
+// import { ReactComponent as HashImg } from "./img/hash.svg";
+// import { ReactComponent as BankImg } from "./img/bank.svg";
+// import { ReactComponent as WalletImg } from "./img/wallet.svg";
 
 
-import { BrowserRouter as Router, Switch, Route,Link,NavLink, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,NavLink, 
+  // useHistory,Link
+ } from "react-router-dom";
 import "./payment.css"
 
-import { MainRou, PowerRad, LinkStled } from "./styled"
+import { MainRou, PowerRad
+  // , LinkStled 
+} from "./styled"
 // import PaySide from "./PaySide"
 
 const PaymentMethod = ({ routes }) => {
 
-  const currentRoute = useHistory().location.pathname.toUpperCase();
+  // const currentRoute = useHistory().location.pathname.toUpperCase();
 
   // const [PaymentContext] = React.useContext(PushContext);
 
