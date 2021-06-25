@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
 export const LinkStled = styled(NavLink)`
 
-  a{
     text-decoration: none;
-  }
     li {
       list-style: none;
+      padding: 0;
+      margin: 0;
       align-items: center;
       li:hover {
         color: white;
@@ -27,11 +27,75 @@ export const LinkStled = styled(NavLink)`
     color: white;
   }
   &:hover {
-    color: white;
-    text-decoration: none;
-    background: #2335ed;
+    // color: white;
+    // background: #2335ed;
     border-radius: 10px;
   }
+`;
+export const SideStyle = styled.div`
+  .ks {
+    text-decoration: none !important;
+    display: flex;
+    // align-items: center;
+    font-weight: 500px;
+    // padding: 1px 5px;
+    color: #56799d;
+    &:hover {
+      color: white;
+      background: #2335ed;
+      border-radius: 10px;
+    }
+    &:active {
+      color: white;
+      background: #2335ed;
+      border-radius: 10px;
+    }
+    .active {
+      color: white;
+      background: #2335ed;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    span {
+      margin-left: 5px;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    align-items: center;
+    margin-bottom: px;
+    display: flex;
+    font-weight: 500px;
+    margin-bottom: 5px; 
+    color: #56799d;
+    &:active {
+      color: white;
+      background: #2335ed;
+      border-radius: 10px;
+    }
+    .active {
+      color: white;
+      background: #2335ed;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    span {
+      margin-left: 5px;
+    }
+  }
+  
+    li {
+      list-style: none;
+      align-items: center;
+      margin: 0; 
+      padding-left: 3px;
+
+      li:hover {
+        color: white;
+        background: #2335ed;
+      }
+    }
 `;
 
 export const PowerRad = styled.span`
@@ -67,14 +131,12 @@ export const BackRad = styled.div`
 
 export const MainRou = styled.div`
   background: #ffffff;
-  // height: auto;
   border-radius: 20px;
   min-height: 375px;
 
   .currentroute {
     &:hover {
       color: white;
-      // background: #2335ed;
       background: #2335ed;
       border-radius: 10px;
     }
