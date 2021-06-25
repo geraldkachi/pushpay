@@ -1,68 +1,45 @@
 import styled from "styled-components";
 
 export const SideStyle = styled.div`
-.links {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  font-weight: 500px;
-  padding: 8px 5px;
-  color: #56799D;
-  &:hover {
-    color: white;
-    background: #2335ED;
-    border-radius: 10px;
-  }
-  &:active{
-    background: #2335ED;
-  }
-  span {
-    margin-left: 5px;
-  }
-}
-ul {
-  padding-left: 0;
-  li {
-    list-style: none;
+  a {
+    text-decoration: none;
+    display: flex;
     align-items: center;
-    li:hover {
+    font-weight: 500px;
+    margin-bottom: 2px;
+    color: #56799d;
+    &:hover {
       color: white;
+      background: #2335ed;
+      border-radius: 10px;
+    }
+    &:active {
+      background: #2335ed;
+      color: white;
+      background: #2335ed;
+      border-radius: 10px;
+    }
+    .active {
+      background: #2335ed;
+      color: white;
+      background: #2335ed;
+      border-radius: 10px;
+    }
+    span {
+      margin-left: 5px;
     }
   }
-}
-
-  // ul {
-  //   padding-left: 0;
-  //   li {
-  //     list-style: none;
-  //     align-items: center;
-  //     li:hover {
-  //       color: white;
-  //     }
-
-  //     .links {
-  //       text-decoration: none;
-  //       display: flex;
-  //       align-items: center;
-  //       font-weight: 500px;
-  //       padding: 8px 5px;
-  //       margin: 3px 0;
-  //       color: #56799d;
-  //       &:hover {
-  //         color: white;
-  //         // background: #2335ed;
-  //         background: #2335ed;
-  //         border-radius: 10px;
-  //       }
-  //       &:isactive {
-  //         background: #2335ed;
-  //       }
-  //       span {
-  //         margin-left: 5px;
-  //       }
-  //     }
-  //   }
-  // }
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    li {
+      align-items: center;
+      li:hover {
+        color: white;
+      }
+    }
+  }
 `;
 
 export const PowerRad = styled.span`
@@ -102,18 +79,17 @@ export const MainRou = styled.div`
   border-radius: 20px;
   min-height: 375px;
 
-
-        .currentroute{
-          &:hover {
-            color: white;
-            // background: #2335ed;
-            background: #2335ed;
-            border-radius: 10px;
-          }
-          &:isactive {
-            background: #2335ed;
-          }
-        }
+  .currentroute {
+    &:hover {
+      color: white;
+      // background: #2335ed;
+      background: #2335ed;
+      border-radius: 10px;
+    }
+    &:isactive {
+      background: #2335ed;
+    }
+  }
 
   @media screen and (max-width: 770px) {
     min-height: unset;
