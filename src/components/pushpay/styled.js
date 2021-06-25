@@ -1,44 +1,36 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom"
 
-export const SideStyle = styled.div`
-  a {
+export const LinkStled = styled(NavLink)`
+
+  a{
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    font-weight: 500px;
-    margin-bottom: 2px;
-    color: #56799d;
-    &:hover {
-      color: white;
-      background: #2335ed;
-      border-radius: 10px;
-    }
-    &:active {
-      background: #2335ed;
-      color: white;
-      background: #2335ed;
-      border-radius: 10px;
-    }
-    .active {
-      background: #2335ed;
-      color: white;
-      background: #2335ed;
-      border-radius: 10px;
-    }
-    span {
-      margin-left: 5px;
-    }
   }
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
     li {
+      list-style: none;
       align-items: center;
       li:hover {
         color: white;
+        background: #2335ed;
+        border-radius: 10px;
       }
     }
+
+  &:active {
+    background: #2335ed;
+    border-radius: 10px;
+    color: white;
+  }
+  .active {
+    background: #2335ed;
+    border-radius: 10px;
+    color: white;
+  }
+  &:hover {
+    color: white;
+    text-decoration: none;
+    background: #2335ed;
+    border-radius: 10px;
   }
 `;
 

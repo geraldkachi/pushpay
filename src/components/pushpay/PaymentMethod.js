@@ -50,18 +50,18 @@ const PaymentMethod = ({ routes }) => {
                   ))} */}
            
            {/*  */}
-           <SideStyle>
+           <>
              {routes.map((route, index) => (
-              <NavLink exact activeClassName="active" activeStyle={{backgroundColor: "#2335ed",borderRadius: '10px', color:'white', textAlign:'center'}} key={index} to={route.path} className={activePath === route.path && "links"}>
-               {/* <ul className="list-unstyled list"> */}
+              <LinkStled exact activeClassName="active" activeStyle={{backgroundColor: "#2335ed", textDecoration: 'none', borderRadius: '10px',display: 'flex', color:'white'}} key={index} to={route.path} className={activePath === route.path && "links"}>
+               <ul className="list-unstyled list">
                  <li className="liClass">
                     {route.icon}
                     <span style={{ fontSize: ".8rem" }}>{route.page}</span>
                  </li>
-               {/* </ul> */}
-              </NavLink>
+               </ul>
+              </LinkStled>
              ))}
-             </SideStyle>
+             </>
 
               {/* <ul className="list-unstyled list">
                 <li className="liClass">
