@@ -13,10 +13,10 @@ import { ReactComponent as BankImg } from "./img/bank.svg";
 import { ReactComponent as WalletImg } from "./img/wallet.svg";
 
 
-import { BrowserRouter as Router, Switch, Route,Link, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,Link,NavLink, useHistory } from "react-router-dom";
 import "./payment.css"
 
-import { MainRou, PowerRad } from "./styled"
+import { MainRou, PowerRad, LinkStled } from "./styled"
 // import PaySide from "./PaySide"
 
 const PaymentMethod = ({ routes }) => {
@@ -49,18 +49,18 @@ const PaymentMethod = ({ routes }) => {
                   </Route>
                   ))} */}
            
-           {/*  */}
+           {/* activeStyle={{backgroundColor: "#2335ed", textDecoration: 'none', borderRadius: '10px', color:'white', textAlign:'center', padding: '0', marginBottom: "10px"}}
+            */}
            <SideStyle>
              {routes.map((route, index) => (
-              <Link key={index} to={route.path} className={activePath === route.path && null}>
-               <ul className="list-unstyled list">
+              <NavLink activeClassName="active" activeStyle={{backgroundColor: "#2335ed", textDecoration: 'none', borderRadius: '10px', color:'white', textAlign:'center'}} key={index} to={route.path} className={activePath === route.path && "links"}>
+               {/* <ul className="list-unstyled list"> */}
                  <li className="liClass">
                     {route.icon}
                     <span style={{ fontSize: ".8rem" }}>{route.page}</span>
                  </li>
-                 {/* {console.log(route.path)} */}
-               </ul>
-              </Link>
+               {/* </ul> */}
+              </NavLink>
              ))}
              </SideStyle>
 
@@ -92,7 +92,7 @@ const PaymentMethod = ({ routes }) => {
               </ul> */}
             
            {/*  */}
-                <div className="bg-white p-2" style={{borderRadius: '10px'}}>
+                <div className="bg-white p-2 mt-3" style={{borderRadius: '10px'}}>
                     <p style={{fontSize: ".9rem"}}>Processing fee</p>
                     <Switch>
                       {routes.map((route, index) => (

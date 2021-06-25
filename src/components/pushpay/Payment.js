@@ -21,9 +21,9 @@ import { paymentFormular } from "../paymentsFormula";
 
 const Payment = () => {
   const {PaymentContext} = React.useContext(PushContext); 
-  const routes = [
+  const [routes] = React.useState([
     {
-      path: "/card",
+      path: "/payment/card",
       exact: true,
       sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
       main: () => <Card />,
@@ -31,7 +31,7 @@ const Payment = () => {
       icon: <CardImg style={{ marginRight: ".5rem" }} />
     },  
     {
-      path: "/ussd",
+      path: "/payment/ussd",
       exact: true,
       sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
       main: () => <USSD />,
@@ -39,7 +39,7 @@ const Payment = () => {
       icon: <HashImg style={{ marginRight: ".5rem" }} />
     },
     {
-      path: "/bank",
+      path: "/payment/bank",
       exact: true,
       sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
       main: () => <Bank/>,
@@ -47,14 +47,14 @@ const Payment = () => {
       icon: <BankImg style={{ marginRight: ".5rem" }} />
     },
     {
-      path: "/wallet",
+      path: "/payment/wallet",
       exact: true,
       sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - (PaymentContext?.amount)}</p>,
       main: () => <PushPayWallet/>,
       page: "PushPay Wallet",
       icon: <WalletImg style={{ marginRight: ".5rem" }} />
     },  
-  ]
+  ])
 
 
   return (
@@ -67,9 +67,9 @@ const Payment = () => {
             </BackRad>
           </div>
         </PaymentLay>
-       <Route path="/ussd" component={USSD} />
-        <Route path="/bank" component={Bank} />
-        <Route path="/wallet" component={PushPayWallet} />
+       <Route path="/payment/ussd" component={USSD} />
+        <Route path="/payment/bank" component={Bank} />
+        <Route path="/payment/wallet" component={PushPayWallet} />
       </Switch>
     </>
   );

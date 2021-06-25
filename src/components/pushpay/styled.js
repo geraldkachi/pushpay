@@ -1,35 +1,98 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
-export const SideStyle = styled.div`
-.links {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  font-weight: 500px;
-  padding: 8px 5px;
-  color: #56799D;
-  &:hover {
+export const LinkStled = styled(NavLink)`
+
+    text-decoration: none;
+    li {
+      list-style: none;
+      align-items: center;
+      li:hover {
+        color: white;
+        background: #2335ed;
+        border-radius: 10px;
+      }
+    }
+
+  &:active {
+    background: #2335ed;
+    border-radius: 10px;
     color: white;
-    background: #2335ED;
+  }
+  .active {
+    background: #2335ed;
+    border-radius: 10px;
+    // color: white;
+  }
+  &:hover {
+    // color: white;
+    background: #2335ed;
     border-radius: 10px;
   }
-  &:active{
-    background: #2335ED;
-  }
-  span {
-    margin-left: 5px;
-  }
-}
-ul {
-  padding-left: 0;
-  li {
-    list-style: none;
-    align-items: center;
-    li:hover {
+`;
+export const SideStyle = styled.div`
+  .ks {
+    text-decoration: none !important;
+    display: flex;
+    // align-items: center;
+    font-weight: 500px;
+    padding: 1px 5px;
+    color: #56799d;
+    &:hover {
       color: white;
+      background: #2335ed;
+      border-radius: 10px;
+    }
+    &:active {
+      color: white;
+      background: #2335ed;
+      border-radius: 10px;
+    }
+    .active {
+      color: white;
+      background: #2335ed;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    span {
+      margin-left: 5px;
     }
   }
-}
+
+  a {
+    text-decoration: none;
+    padding: 5px 0;
+    margin-bottom: 5px;
+    display: flex;
+    font-weight: 500px;
+    color: #56799d;
+    &:active {
+      color: white;
+      background: #2335ed;
+      border-radius: 10px;
+    }
+    .active {
+      color: white;
+      background: #2335ed;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    span {
+      margin-left: 5px;
+    }
+  }
+  
+    li {
+      list-style: none;
+      align-items: center;
+      margin: 0; 
+      padding-left: 3px;
+
+      li:hover {
+        color: white;
+        background: #2335ed;
+      }
+    }
 
   // ul {
   //   padding-left: 0;
@@ -45,7 +108,7 @@ ul {
   //       display: flex;
   //       align-items: center;
   //       font-weight: 500px;
-  //       padding: 8px 5px;
+  //       padding: 2px 5px;
   //       margin: 3px 0;
   //       color: #56799d;
   //       &:hover {
@@ -102,18 +165,17 @@ export const MainRou = styled.div`
   border-radius: 20px;
   min-height: 375px;
 
-
-        .currentroute{
-          &:hover {
-            color: white;
-            // background: #2335ed;
-            background: #2335ed;
-            border-radius: 10px;
-          }
-          &:isactive {
-            background: #2335ed;
-          }
-        }
+  .currentroute {
+    &:hover {
+      color: white;
+      // background: #2335ed;
+      background: #2335ed;
+      border-radius: 10px;
+    }
+    &:isactive {
+      background: #2335ed;
+    }
+  }
 
   @media screen and (max-width: 770px) {
     min-height: unset;
