@@ -4,17 +4,7 @@ import { NavLink } from "react-router-dom";
 export const LinkStled = styled(NavLink)`
 
     text-decoration: none;
-    li {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      align-items: center;
-      li:hover {
-        color: white;
-        background: #2335ed;
-        border-radius: 10px;
-      }
-    }
+    margin-bottom: 25px;
 
   &:active {
     background: #2335ed;

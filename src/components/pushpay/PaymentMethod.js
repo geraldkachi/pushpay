@@ -7,10 +7,10 @@ import {ReactComponent as  Thund } from  "./img/thund.svg"
 
 import { SideStyle } from "./styled";
 
-import { ReactComponent as CardImg } from "./img/card.svg";
-import { ReactComponent as HashImg } from "./img/hash.svg";
-import { ReactComponent as BankImg } from "./img/bank.svg";
-import { ReactComponent as WalletImg } from "./img/wallet.svg";
+// import { ReactComponent as CardImg } from "./img/card.svg";
+// import { ReactComponent as HashImg } from "./img/hash.svg";
+// import { ReactComponent as BankImg } from "./img/bank.svg";
+// import { ReactComponent as WalletImg } from "./img/wallet.svg";
 
 
 import { BrowserRouter as Router, Switch, Route,Link,NavLink, useHistory } from "react-router-dom";
@@ -53,12 +53,12 @@ const PaymentMethod = ({ routes }) => {
            <SideStyle>
              {routes.map((route, index) => (
               <LinkStled exact activeClassName="active" activeStyle={{backgroundColor: "#2335ed", textDecoration: 'none', borderRadius: '10px', color:'white'}} key={index} to={route.path} className={activePath === route.path && "links"}>
-               <ul className="list-unstyled list">
-                 <li className="liClass">
+               {/* <ul className="list-unstyled list">
+                 <li className="liClass"> */}
                     {route.icon}
                     <span style={{ fontSize: ".8rem" }}>{route.page}</span>
-                 </li>
-               </ul>
+                 {/* </li>
+               </ul> */}
               </LinkStled>
              ))}
              </SideStyle>
@@ -95,12 +95,7 @@ const PaymentMethod = ({ routes }) => {
                     <p style={{fontSize: ".9rem"}}>Processing fee</p>
                     <Switch>
                       {routes.map((route, index) => (
-                        <Route
-                        key={index}
-                        path={route.path}
-                        exact={route.exact}
-                        children={<route.sidebar />}
-                        />
+                        <Route key={index} path={route.path} exact={route.exact} children={<route.sidebar />} />
                         ))}
                     </Switch>
                 </div>
