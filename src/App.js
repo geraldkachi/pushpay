@@ -16,7 +16,7 @@ const App = () => {
     <>
       <Switch>
         <Route exact path="/" component={Pushpay} />
-        <Route exact path="/payment/card" component={Payment} />
+        <Route path="/payment/card" component={Payment} />
         {/* <Route path="/payment/ussd" component={Payment} />
         <Route path="/payment/bank" component={Payment} />
         <Route path="/payment/wallet" component={Payment} /> */}
@@ -28,7 +28,7 @@ const App = () => {
 
 export default App;
 
-// https://cssgradient.io/     https://getwaves.io/   https://bennettfeely.com/clippy/
+// https://cssgradient.io/   https://getwaves.io/   https://bennettfeely.com/clippy/
 
 //  from a site
 // axios.all([

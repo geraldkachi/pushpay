@@ -1,34 +1,17 @@
-import React from "react";
-import PaymentMethod from "./PaymentMethod";
-import "./payment.css";
+import { paymentFormular } from "../paymentsFormula";
 
 import PushPayWallet from './PushPayWallet';
 import USSD from './USSD';
 import Card from './Card';
 import Bank from './Bank';
-import { Route, Switch, useRouteMatch } from "react-router-dom";
 
 import { ReactComponent as CardImg } from "./img/card.svg";
 import { ReactComponent as HashImg } from "./img/hash.svg";
 import { ReactComponent as BankImg } from "./img/bank.svg";
 import { ReactComponent as WalletImg } from "./img/wallet.svg";
 
-import { BackRad, PaymentLay } from "./styled"; //ListSTyle
-import { PushContext } from "../../ContextProvider";
-import { paymentFormular } from "../paymentsFormula";
-// import { routes } from "./routedata";
 
-// const currentRoute = useHistory().location.pathname.toLowerCase();
-
-
-
-const Payment = () => {
-
-  let { path } = useRouteMatch();
-  const {PaymentContext} = React.useContext(PushContext); 
-
-
-  const  routes = [
+export const  routes = [
     {
       path: "/payment/card",
       exact: true,
@@ -62,26 +45,3 @@ const Payment = () => {
       icon: <WalletImg style={{ marginRight: ".5rem" }} />
     },  
   ]
-
-  return (
-    <>
-    <Switch>
-        <PaymentLay className="backpay">
-          <div style={{ width: "616px" }}>
-            <BackRad className="p-4 overflow-hidden backrad">
-              <PaymentMethod {...{routes}} />
-            </BackRad>
-          </div>
-        </PaymentLay>
-       {/* <Route path="/payment/ussd" component={USSD} />
-        <Route path="/payment/bank" component={Bank} />
-        <Route path="/payment/wallet" component={PushPayWallet} /> */}
-      </Switch>
-    </>
-  );
-};
-
-
-export default Payment;
-
-// <Link className="links" style={{backgroundColor: currentRoute === "/payment/bank" ? "#2335ed" : "", }} to="/payment/bank"> 
