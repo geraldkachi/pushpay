@@ -72,7 +72,7 @@ const PushPayWallet = () => {
 
                     </div>
                         <div className="col-md px-0 mx-0">
-                            <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3 border-0">
+                            <Button type="submit" style={paybtn} onClick={()=> alert('Wallet has paid successfully')} className="text-center btn-block mx-auto px-5 fs-3 border-0">
                             {/* <span class="spinner-border spinner-border-sm mr-1"></span> */}
                                 Pay NGN {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
                             </Button>
