@@ -47,20 +47,28 @@ const USSD = () => {
     const [count,setCount] = useState(0)
     const [countThree,setCountThree] = useState(0)
 
+    const [isLoading, setIsLoading] = useState(false);
+
+
     const onChange = ({ target }) => {
         setRender({ ...render, [target.name]: target.value })
         setCount([Math.floor((Math.random()* 100000000000000))])
 
         setRender({ ...render, [target.name]: target.value })
         setCountThree([Math.floor((Math.floor(Math.random() * 1000) + 1))])
+        setIsLoading(true)
     }
     useEffect(() => {
-        if (render !== null){
-            setShowData(true)
-        }
+        setTimeout(() => {
+            if (render !== null){
+                setShowData(true)
+            }
+            setIsLoading(false)
+        }, 3000)
+        return () => setIsLoading(true)
+
     }, [render])
-
-
+    
 
     return (
         <div>
@@ -92,6 +100,11 @@ const USSD = () => {
             </div>
 
 
+            {isLoading && (
+                <div className="d-flex justify-content-center align-items-center">
+                    <span className="spinner-border text-success spinner-border-sm mr-1"></span> Please wait
+                </div>
+            )}
             {showData &&(
                 <div className="mx-auto text-center mt-5">
                     <p style={{fontSize: "25px", fontFamily: "Work Sans"}}>{options.find(option => option.bank === render.bank)?.ussd}*{countThree}*{count}#</p>
@@ -100,7 +113,8 @@ const USSD = () => {
                        Pay NGN {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
                     </Button>
                 </div>
-                )}
+            )}
+            
 
             {/* <select name="bank"  >
                 <option hidden>Click here to choose</option>

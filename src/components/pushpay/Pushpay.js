@@ -49,6 +49,7 @@ const Pushpay = () => {
         },
         onSubmit: ({email, firstname, lastname, number }) => {
           console.log( `Email: ${email}, Firstname: ${firstname}, Lastname: ${lastname}, Amount: ${number} `)
+          console.log(setPaymentInfo({...paymentInfo, amount: number}));
           setPaymentInfo({...paymentInfo, amount: number})
           setShowData(false)
           setTimeout(function(){ 

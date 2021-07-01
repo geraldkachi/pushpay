@@ -24,9 +24,12 @@ const Bank = () => {
   const [render, setRender] = useState(null)
   const [showData, setShowData] = useState(false)
   // const [count,setCount] = useState(0)
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const onChange = ({ target }) => {
     setRender({ ...render, [target.name]: target.value })
+    setIsLoading(true)
   //   setCount([Math.floor((Math.random()* 100000000000000))])
 
     // setRender({ ...render, [target.name]: target.value })
@@ -34,11 +37,16 @@ const Bank = () => {
   }
 
     useEffect(() => {
-      if (render !== null){
-          setShowData(true)
-      } 
-    }, [render])
 
+      setTimeout(() => {
+        if (render !== null){
+          setShowData(true)
+        } 
+          setIsLoading(false)
+        }, 3000)
+      
+      return () => setIsLoading(true)
+    }, [render])
 
 
     const {handleSubmit, handleChange, values, touched, errors, handleBlur} = useFormik({
@@ -89,6 +97,13 @@ const Bank = () => {
                     </Input>
                 </span>
             </div>  
+
+
+            {isLoading && (
+                <div className="d-flex justify-content-center align-items-center">
+                    <span className="spinner-border text-success spinner-border-sm mr-1"></span> Please wait
+                </div>
+            )}
 
             {showData &&(
                 <div className="mx-auto mt-5" onChange={onChange}>

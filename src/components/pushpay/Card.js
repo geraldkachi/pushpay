@@ -18,7 +18,7 @@ const Card = () => {
         // eslint-disable-next-line
     }, [])
 
-    const history = useHistory()   
+    const history = useHistory()
 
     const {handleSubmit, handleChange, values, touched, errors, handleBlur} = useFormik({
         initialValues: {
