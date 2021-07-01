@@ -6,7 +6,7 @@ import PushPayWallet from './PushPayWallet';
 import USSD from './USSD';
 import Card from './Card';
 import Bank from './Bank';
-import { Route, Switch, useRouteMatch } from "react-router-dom";
+// import { Route, Switch, useRouteMatch } from "react-router-dom";
 
 import { ReactComponent as CardImg } from "./img/card.svg";
 import { ReactComponent as HashImg } from "./img/hash.svg";
@@ -23,7 +23,7 @@ import { paymentFormular } from "../paymentsFormula";
 
 const Payment = () => {
 
-  let { path } = useRouteMatch();
+  // let { path } = useRouteMatch();
   const [ PaymentContext ] = React.useContext(PushContext); 
 
   const [routes] = React.useState([

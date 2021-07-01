@@ -43,7 +43,7 @@ const Bank = () => {
           setShowData(true)
         } 
           setIsLoading(false)
-        }, 3000)
+        }, 1000)
       
       return () => setIsLoading(true)
     }, [render])

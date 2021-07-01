@@ -69,9 +69,7 @@ const PaymentMethod = ({ routes }) => {
                     <p style={{fontSize: ".9rem"}}>Processing fee</p>
                     <Switch>
                       {routes.map((route, index) => (
-                        <Route key={index} path={route.path} exact={route.exact}>
-                          <route.sidebar />
-                        </Route>
+                        <Route key={index} path={route.path} exact={route.exact} children={<route.sidebar /> }/>
                         ))}
                     </Switch>
                 </div>
