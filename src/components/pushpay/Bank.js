@@ -10,12 +10,12 @@ import { paymentFormular } from '../paymentsFormula';
 const Bank = () => {
 
 
-  const [PaymentContext, setPaymentContext] = React.useContext(PushContext);
+  const [paymentconst, UpDatePayment] = React.useContext(PushContext);
 
     React.useEffect(() => {
-      setPaymentContext({...PaymentContext, channel: "bank"})
+      UpDatePayment({...paymentconst, channel: "bank"})
       // eslint-disable-next-line
-    }, [PaymentContext])
+    }, [])
 
   const [dropdownOpen, setOpen] = useState(false)
 
@@ -109,7 +109,7 @@ const Bank = () => {
                           <div className="col-md px-0 mx-0">
                               <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3 border-0">
                               {/* <span class="spinner-border spinner-border-sm mr-1"></span> */}
-                                Pay NGN {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
+                                Pay NGN {paymentFormular(paymentconst?.amount, paymentconst?.channel)?.totalCharges}
                               </Button>
                           </div>
                   </form>

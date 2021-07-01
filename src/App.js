@@ -6,9 +6,9 @@ import NotFound from "./components/NotFound";
 import "./App.css";
 import Pushpay from "./components/pushpay/Pushpay";
 import Payment from "./components/pushpay/Payment";
-// import USSD from "./components/pushpay/USSD";
-// import Bank from "./components/pushpay/Bank";
-// import PushPayWallet from "./components/pushpay/PushPayWallet";
+import USSD from "./components/pushpay/USSD";
+import Bank from "./components/pushpay/Bank";
+import PushPayWallet from "./components/pushpay/PushPayWallet";
 
 
 const App = () => {
@@ -16,10 +16,7 @@ const App = () => {
     <>
       <Switch>
         <Route exact path="/" component={Pushpay} />
-        <Route path="/payment/card" component={Payment} />
-        {/* <Route path="/payment/ussd" component={Payment} />
-        <Route path="/payment/bank" component={Payment} />
-        <Route path="/payment/wallet" component={Payment} /> */}
+        <Route path="/payment" component={Payment} />
         <Route path="*" component={NotFound} />
       </Switch>  
     </>

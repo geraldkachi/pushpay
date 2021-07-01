@@ -16,7 +16,6 @@ import { ReactComponent as WalletImg } from "./img/wallet.svg";
 import { BackRad, PaymentLay } from "./styled"; //ListSTyle
 import { PushContext } from "../../ContextProvider";
 import { paymentFormular } from "../paymentsFormula";
-// import { routes } from "./routedata";
 
 // const currentRoute = useHistory().location.pathname.toLowerCase();
 
@@ -25,10 +24,9 @@ import { paymentFormular } from "../paymentsFormula";
 const Payment = () => {
 
   let { path } = useRouteMatch();
-  const {PaymentContext} = React.useContext(PushContext); 
+  const [ PaymentContext ] = React.useContext(PushContext); 
 
-
-  const  routes = [
+  const [routes] = React.useState([
     {
       path: "/payment/card",
       exact: true,
@@ -61,22 +59,17 @@ const Payment = () => {
       page: "PushPay Wallet",
       icon: <WalletImg style={{ marginRight: ".5rem" }} />
     },  
-  ]
+  ])
 
   return (
     <>
-    <Switch>
-        <PaymentLay className="backpay">
-          <div style={{ width: "616px" }}>
-            <BackRad className="p-4 overflow-hidden backrad">
+      <PaymentLay className="backpay">
+        <div style={{ width: "616px" }}>
+          <BackRad className="p-4 overflow-hidden backrad">
               <PaymentMethod {...{routes}} />
-            </BackRad>
-          </div>
-        </PaymentLay>
-       {/* <Route path="/payment/ussd" component={USSD} />
-        <Route path="/payment/bank" component={Bank} />
-        <Route path="/payment/wallet" component={PushPayWallet} /> */}
-      </Switch>
+          </BackRad>
+        </div>
+      </PaymentLay>
     </>
   );
 };
@@ -85,3 +78,19 @@ const Payment = () => {
 export default Payment;
 
 // <Link className="links" style={{backgroundColor: currentRoute === "/payment/bank" ? "#2335ed" : "", }} to="/payment/bank"> 
+
+
+// <Switch>
+// <Switch>
+//     <PaymentLay className="backpay">
+//       <div style={{ width: "616px" }}>
+//         <BackRad className="p-4 overflow-hidden backrad">
+//           <PaymentMethod {...{routes}} />
+//         </BackRad>
+//       </div>
+//     </PaymentLay>
+//    {/* <Route path="/payment/ussd" component={USSD} />
+//     <Route path="/payment/bank" component={Bank} />
+//     <Route path="/payment/wallet" component={PushPayWallet} /> */}
+//   </Switch> 
+// </>

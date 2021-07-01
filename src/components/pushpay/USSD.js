@@ -28,14 +28,15 @@ const USSD = () => {
 
         
 
-            console.log(PaymentContext);
+            // console.log(PaymentContext);
         React.useEffect(() => {
             //  {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
-            setPaymentContext({...PaymentContext, channel: "ussd", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges })
-            console.log(setPaymentContext({...PaymentContext, channel: "ussd", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges})
-            );
+            setPaymentContext({...PaymentContext, channel: "ussd" })
+            // console.log({...PaymentContext, channel: "ussd" })
+            // setPaymentContext({...PaymentContext, channel: "ussd", processingFee: paymentFormular(PaymentContext?.amount, "ussd")?.totalCharges })
+            // console.log(setPaymentContext({...PaymentContext, channel: "ussd", processingFee: paymentFormular(PaymentContext?.amount, "ussd")?.totalCharges}));
             // eslint-disable-next-line
-        }, [PaymentContext])
+        }, [])
 
     const [dropdownOpen, setOpen] = useState(false)
 

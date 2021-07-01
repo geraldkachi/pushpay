@@ -35,11 +35,11 @@ const PaymentMethod = ({ routes }) => {
         <Router>
             <div className="sidebars col-md-4">
             <div className="header  mt-3">
-              <PushImg />
+              <PushImg /> 
               <h4 className="my-3" style={{ fontSize: ".6rem", fontWeight: 500 }}>Choose payment method</h4>
             </div>
 
-           <d iv className="">
+           <div className="">
 
                {/* {routes.map((route, index) => (
                   <Route key={index} path={route.path} exact={route.exact}>
@@ -61,44 +61,19 @@ const PaymentMethod = ({ routes }) => {
               </LinkStled>
              ))}
              </SideStyle>
-
-              {/* <ul className="list-unstyled list">
-                <li className="liClass">
-                  <Link className="links" style={{backgroundColor: currentRoute === "/payment/" ? "#2335ed" : "", borderRadius:'10px'}} to="/payment/card">
-                    <CardImg style={{ marginRight: ".5rem" }} />
-                    <span style={{ fontSize: ".8rem" }}>Card</span>
-                  </Link>
-                </li>
-                <li className="liClass">
-                  <Link className="links" style={{backgroundColor: currentRoute === "/payment/ussd" ? "#2335ed" : "", borderRadius:'10px'}} to="/payment/ussd">
-                    <HashImg style={{ marginRight: ".5rem" }} />
-                    <span style={{ fontSize: ".8rem" }}>USSD</span>
-                  </Link>
-                </li>
-                <li className="liClass">
-                  <Link className="links" style={{backgroundColor: currentRoute === "/payment/bank" ? "#2335ed" : "", borderRadius:'10px'}} to="/payment/bank"> 
-                    <BankImg style={{ marginRight: ".5rem" }} />
-                    <span style={{ fontSize: ".8rem" }}>Bank</span>
-                  </Link>
-                </li>
-                <li className="liClass">
-                  <Link className="links" style={{backgroundColor: currentRoute === "/payment/wallet" ? "#2335ed" : "", borderRadius:'10px'}} to="/payment/wallet">
-                    <WalletImg style={{ marginRight: ".5rem" }} />
-                    <span style={{ fontSize: ".8rem" }}>PushPay wallet</span>
-                  </Link>
-                </li>
-              </ul> */}
             
            {/*  */}
                 <div className="bg-white p-2" style={{borderRadius: '10px'}}>
                     <p style={{fontSize: ".9rem"}}>Processing fee</p>
                     <Switch>
                       {routes.map((route, index) => (
-                        <Route key={index} path={route.path} exact={route.exact} children={<route.sidebar />} />
+                        <Route key={index} path={route.path} exact={route.exact}>
+                          <route.sidebar />
+                        </Route>
                         ))}
                     </Switch>
                 </div>
-            </d>
+            </div>
            </div>
 
             <MainRou className="main col-md mt-2 mb-2 py-3">
@@ -143,3 +118,22 @@ export default PaymentMethod
 // React.useEffect(() => {
 // PaymentFee()
 // }, [])
+
+
+// <>
+// <div className="pay">
+//   <div className="row mx-0 justify-content-center align-items-start">
+//     <>
+//       <div className="col-md-4">
+//         <SideBar {...{ routes }} />
+//       </div>
+//       <Main {...{ routes }} />
+//     </>
+//   </div>
+// </div>
+
+// <></>
+// <PowerRad className="text-center">
+//   <Thund /> Powered by PushPay
+// </PowerRad>
+// </>

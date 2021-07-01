@@ -54,7 +54,7 @@ export const SideStyle = styled.div`
   a {
     text-decoration: none;
     align-items: center;
-    margin-bottom: px;
+    // margin-bottom: px;
     display: flex;
     font-weight: 500px;
     margin-bottom: 5px; 
@@ -73,6 +73,10 @@ export const SideStyle = styled.div`
     span {
       margin-left: 5px;
     }
+  }
+  ul{
+    margin: 0;
+    padding: 5px;
   }
   
     li {

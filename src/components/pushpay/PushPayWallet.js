@@ -15,10 +15,17 @@ const PushPayWallet = () => {
 
     const [PaymentContext, setPaymentContext] = React.useContext(PushContext);
 
+    // const {paymentconst, setPayment} = usePaymentContext();
+    // let oldPaymentObject = {...paymentconst};
+    
+    // React.useEffect(() => {
+    //     setPayment({...oldPaymentObject, channel: "wallet"})
+    // }, [])
+
     React.useEffect(() => {
         setPaymentContext({...PaymentContext, channel: "wallet"})
             // eslint-disable-next-line
-    }, [PaymentContext])
+    }, [])
 
     const history = useHistory()
 
