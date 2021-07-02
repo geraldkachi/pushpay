@@ -114,9 +114,9 @@ const Bank = () => {
                       <div className="row m-0">
                           <div className="col-md px-0 mx-0">
                               <FormGroup>
-                                  <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="Card Number">Card number</Label>
-                              </FormGroup>
+                                  <Label style={labeltext} className="fs-1 fw-bolder ml-2" htmlFor="Card Number">Card number</Label>
                                   <Input style={input} placeholder="pp9012345678" id="number" type="text" name="number" value={values.number} onChange={handleChange} onBlur={handleBlur} />  
+                              </FormGroup>
                               {touched.number && errors.number ? (<div className='text-danger'>{errors.number}</div>) : (null)}
                           </div>
 
@@ -124,7 +124,7 @@ const Bank = () => {
                           <div className="col-md px-0 mx-0">
                               <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3 border-0" onClick={()=> alert('Bank don enter')}>
                               {/* <span class="spinner-border spinner-border-sm mr-1"></span> */}
-                                Pay NGN {paymentFormular(paymentconst?.amount, paymentconst?.channel)?.totalCharges}
+                                Pay NGN {parseInt(paymentFormular(paymentconst?.amount, paymentconst?.channel)?.totalCharges).toLocaleString()}
                               </Button>
                           </div>
                   </form>
@@ -168,7 +168,7 @@ const input = {
   borderRadius: "20px",
   fontFamily: 'Work Sans',
   fontSize: "10px",
-  marginTop: "1rem"
+  // marginTop: "1rem"
   
 }
 

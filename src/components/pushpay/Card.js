@@ -41,6 +41,15 @@ const Card = () => {
         })
       })
 
+      const currencyFractionDigits = new Intl.NumberFormat('de-DE', {
+        style: 'currency',
+        currency: 'EUR',
+        }).resolvedOptions().maximumFractionDigits;
+
+        function currencyFormat(num) {
+            return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+         }
+
     return (
         <div>
             <div className="mx-3" style={{fontSize:"10px", color:'#23609E', fontFamily: 'Work Sans'}}> 
@@ -54,24 +63,24 @@ const Card = () => {
                     <div className="row m-0">
                         <div className="col-md">
                             <FormGroup>
-                                <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="Card Number">Card number</Label>
-                            </FormGroup>
+                                <Label style={labeltext} className="fs-1 fw-bolder ml-2" htmlFor="Card Number">Card number</Label>
                                 <Input style={input} placeholder="0000 0000 0000 0000" id="number" type="text" name="number" value={values.number} onChange={handleChange} onBlur={handleBlur} />  
+                            </FormGroup>
                             {touched.number && errors.number ? (<div className='text-danger'>{errors.number}</div>) : (null)}
                         </div>
                     </div>
 
-                    <div className="row mx-0">
-                            <div className="col-sm-6">
+                    <div className="row mx-0 mt-2">
+                            <div className="col-sm-6 mt-3">
                                 <FormGroup>
-                                <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="date">Expiry date</Label>
+                                <Label style={labeltext} className="fs-1 fw-bolder ml-2" htmlFor="date">Expiry date</Label>
                                 <Input style={input} placeholder="MM / YY" id="date" type="date" name="date" value={values.date} onChange={handleChange} onBlur={handleBlur} />
                                 </FormGroup>
                                 {touched.date && errors.date ? (<div className='text-danger'>{errors.date}</div>) : (null)}
                         </div>
-                        <div className="col-sm-6">
+                        <div className="col-sm-6 mt-3">
                         <FormGroup>
-                            <Label style={labeltext} className="fs-1 fw-bolder" htmlFor="cvv">CVV</Label>
+                            <Label style={labeltext} className="fs-1 fw-bolder ml-2" htmlFor="cvv">CVV</Label>
                             <Input maxLength="3" style={input} placeholder="CVV" id="cvv" type="number" name="cvv" value={values.cvv} onChange={handleChange} onBlur={handleBlur} />
                         </FormGroup>
                         {touched.cvv && errors.cvv ? (<div className='text-danger'>{errors.cvv}</div>) : (null)}
@@ -82,7 +91,7 @@ const Card = () => {
                     <div className="col-md">
                         <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3 border-0">
                         {/* <span class="spinner-border spinner-border-sm mr-1"></span> */}
-                            Pay NGN {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
+                            Pay NGN {parseInt(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges).toLocaleString()}
                         </Button>
                     </div>
                 </div>
@@ -107,7 +116,7 @@ const paybtn = {
     padding: ".5rem"
 }
 
-const input ={
+const input = {
     paddingTop: "1rem",
     paddingBottom: "1rem",
     outline: "none",
@@ -117,7 +126,7 @@ const input ={
     borderRadius: "20px",
     fontFamily: 'Work Sans',
     fontSize: "10px",
-    marginTop: "1rem"
+    // marginTop: "1rem"
     
 }
 
@@ -125,6 +134,7 @@ const labeltext = {
     fontFamily: "Work Sans",
     fontSize: "10px",
     color: "#23609e",
+    marginLeft: "5px",
 }
 
 export default Card

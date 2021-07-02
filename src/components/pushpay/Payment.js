@@ -30,7 +30,7 @@ const Payment = () => {
     {
       path: "/payment/card",
       exact: true,
-      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt(PaymentContext?.amount)}</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt((PaymentContext?.amount).toLocaleString())}</p>,
       main: () => <Card />,
       page: "card",
       icon: <CardImg style={{ marginRight: ".5rem" }} />
@@ -38,7 +38,7 @@ const Payment = () => {
     {
       path: "/payment/ussd",
       exact: true,
-      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt(PaymentContext?.amount)}</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt((PaymentContext?.amount).toLocaleString())}</p>,
       main: () => <USSD />,
       page: "ussd",
       icon: <HashImg style={{ marginRight: ".5rem" }} />
@@ -46,7 +46,7 @@ const Payment = () => {
     {
       path: "/payment/bank",
       exact: true,
-      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt(PaymentContext?.amount)}</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt((PaymentContext?.amount).toLocaleString())}</p>,
       main: () => <Bank/>,
       page: "bank",
       icon: <BankImg style={{ marginRight: ".5rem" }} />
@@ -54,7 +54,7 @@ const Payment = () => {
     {
       path: "/payment/wallet",
       exact: true,
-      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt(PaymentContext?.amount)}</p>,
+      sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt((PaymentContext?.amount).toLocaleString())}</p>,
       main: () => <PushPayWallet/>,
       page: "PushPay Wallet",
       icon: <WalletImg style={{ marginRight: ".5rem" }} />
@@ -76,6 +76,14 @@ const Payment = () => {
 
 
 export default Payment;
+
+
+// handleChange(event) {
+//   const parseNumber = parseInt(event.target.value);
+//   const toLocale = parseNumber.toLocaleString();
+//   this.setState({ value: toLocale });
+// }
+
 
 // <Link className="links" style={{backgroundColor: currentRoute === "/payment/bank" ? "#2335ed" : "", }} to="/payment/bank"> 
 
