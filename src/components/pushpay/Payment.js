@@ -33,7 +33,7 @@ const Payment = () => {
       sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges) - parseInt(PaymentContext?.amount.toLocaleString())}</p>,
       main: () => <Card />,
       page: "card",
-      icon: <CardImg fill="white" stroke='white' style={{ marginRight: ".5rem", textColor: 'white' }} />
+      icon: <CardImg fill="white" stroke='white' style={{ marginRight: ".5rem" }} />
     },  
     {
       path: "/payment/ussd",
