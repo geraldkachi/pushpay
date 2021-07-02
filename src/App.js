@@ -5,10 +5,7 @@ import NotFound from "./components/NotFound";
 
 import "./App.css";
 import Pushpay from "./components/pushpay/Pushpay";
-import Payment from "./components/pushpay/Payment";
-import USSD from "./components/pushpay/USSD";
-import Bank from "./components/pushpay/Bank";
-import PushPayWallet from "./components/pushpay/PushPayWallet";
+import Payment from "./components/pushpay/Payment";;
 
 
 const App = () => {
