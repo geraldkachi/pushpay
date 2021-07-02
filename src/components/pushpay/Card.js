@@ -41,15 +41,6 @@ const Card = () => {
         })
       })
 
-      const currencyFractionDigits = new Intl.NumberFormat('de-DE', {
-        style: 'currency',
-        currency: 'EUR',
-        }).resolvedOptions().maximumFractionDigits;
-
-        function currencyFormat(num) {
-            return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-         }
-
     return (
         <div>
             <div className="mx-3" style={{fontSize:"10px", color:'#23609E', fontFamily: 'Work Sans'}}> 
