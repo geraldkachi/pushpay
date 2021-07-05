@@ -10,7 +10,8 @@ import React, { createContext,
 export const PushContext = createContext(); 
 
 const ContextProvider = ({ children }) => {
-  const [paymentconst, setPayment] = useState({amount: 0, channel: null, processingFee: 0});
+  const [paymentState, setPaymentState] = useState({amount: 0, channel: '', processingFee: 0});
+  // console.log(paymentState)
 
   // let initialState = localStorage.getItem('payment');
   // if (initialState) {
@@ -24,7 +25,7 @@ const ContextProvider = ({ children }) => {
   // }, [paymentState]);
 
   return (
-    <PushContext.Provider value={[paymentconst, setPayment]}>
+    <PushContext.Provider value={{ paymentState, setPaymentState }}>
       {children}
     </PushContext.Provider> 
   );

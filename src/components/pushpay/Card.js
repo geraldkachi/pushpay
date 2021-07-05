@@ -9,12 +9,16 @@ import { paymentFormular } from '../paymentsFormula';
 
 
 const Card = () => {
-    const [PaymentContext, setPaymentContext] = React.useContext(PushContext);
-
+    // two thing to handle the ndefien and to handle the looping
+    const { paymentState, setPaymentState } = React.useContext(PushContext);
+    const pValue = paymentFormular(paymentState?.amount, "card")
     React.useEffect(() => {
-        //  {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
-        setPaymentContext({...PaymentContext, channel: "card", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges })
-        // console.log(setPaymentContext({...PaymentContext, channel: "card", processingFee: paymentFormular(PaymentContext?.amount, "card")?.totalCharges}));
+        // console.log('pValue',pValue)
+        //  {paymentFormular(paymentState?.amount, paymentState?.channel)?.totalCharges}
+        if (paymentState.processingFee !== pValue.totalCharges) {
+            setPaymentState({...paymentState, channel: "card", processingFee: pValue? pValue.totalCharges: 0})
+        }
+        // console.log(setPaymentState({...paymentState, channel: "card", processingFee: paymentFormular(paymentState?.amount, "card")?.totalCharges}));
         // eslint-disable-next-line
     }, [])
 
@@ -82,7 +86,7 @@ const Card = () => {
                     <div className="col-md">
                         <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3 border-0">
                         {/* <span class="spinner-border spinner-border-sm mr-1"></span> */}
-                            Pay NGN {parseInt(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges).toLocaleString()}
+                            Pay NGN {parseInt(paymentFormular(paymentState?.amount, paymentState?.channel)?.totalCharges).toLocaleString()}
                         </Button>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import { paymentFormular } from '../paymentsFormula';
 
 
 const USSD = () => {
-    const [PaymentContext, setPaymentContext] = React.useContext(PushContext);
+    const { paymentState, setPaymentState } = React.useContext(PushContext);
 
         const options = [
             {
@@ -28,13 +28,14 @@ const USSD = () => {
 
         
 
-            // console.log(PaymentContext);
+        const pValue = paymentFormular(paymentState?.amount, "ussd")
         React.useEffect(() => {
-            //  {paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges}
-            setPaymentContext({...PaymentContext, channel: "ussd" })
-            // console.log({...PaymentContext, channel: "ussd" })
-            // setPaymentContext({...PaymentContext, channel: "ussd", processingFee: paymentFormular(PaymentContext?.amount, "ussd")?.totalCharges })
-            // console.log(setPaymentContext({...PaymentContext, channel: "ussd", processingFee: paymentFormular(PaymentContext?.amount, "ussd")?.totalCharges}));
+            if (paymentState.processingFee !== pValue.totalCharges) {
+                setPaymentState({...paymentState, channel: "ussd", processingFee: pValue? pValue.totalCharges: 0})
+            }
+
+            // setPaymentState({...paymentState, channel: "ussd", processingFee: paymentFormular(paymentState?.amount, "ussd")?.totalCharges })
+            // console.log(setPaymentState({...paymentState, channel: "ussd", processingFee: paymentFormular(paymentState?.amount, "ussd")?.totalCharges}));
             // eslint-disable-next-line
         }, [])
 
@@ -110,7 +111,7 @@ const USSD = () => {
                     <p style={{fontSize: "25px", fontFamily: "Work Sans"}}>{options.find(option => option.bank === render.bank)?.ussd}*{countThree}*{count}#</p>
 
                     <Button type="submit" onClick={()=> alert('USSD has paid successfully')} style={paybtn} className="text-center btn-block mx-auto px-5 fs-3 border-0 mt-5">
-                       Pay NGN {parseInt(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges).toLocaleString()}
+                       Pay NGN {parseInt(paymentFormular(paymentState?.amount, paymentState?.channel)?.totalCharges).toLocaleString()}
                     </Button>
                 </div>
             )}

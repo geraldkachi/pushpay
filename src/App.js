@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import NotFound from "./components/NotFound";
 
@@ -14,6 +14,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Pushpay} />
         <Route path="/payment" component={Payment} />
+        <Redirect from="/payment" to="/payment/card" /> 
         <Route path="*" component={NotFound} />
       </Switch>  
     </>

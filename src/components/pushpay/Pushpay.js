@@ -13,10 +13,11 @@ const Pushpay = () => {
 
   const [render, setRender] = useState(null)
   const [showData, setShowData] = useState(true)
-  const [paymentInfo, setPaymentInfo] = useContext(PushContext)
+  const { paymentState, setPaymentState } = useContext(PushContext)
 
-  const onChange = ({ target }) => {
-    setRender({ ...render, [target.name]: target.value }) 
+  const onChange = (e) => {
+    const {name, value} = e.target
+    setRender({ ...render, [name]: value }) 
   }
   
   useEffect(() => {
@@ -49,12 +50,12 @@ const Pushpay = () => {
         },
         onSubmit: ({email, firstname, lastname, number }) => {
           console.log( `Email: ${email}, Firstname: ${firstname}, Lastname: ${lastname}, Amount: ${number} `)
-          console.log(setPaymentInfo({...paymentInfo, amount: number}));
-          setPaymentInfo({...paymentInfo, amount: number})
+          // console.log(setPaymentState({...paymentState, amount: number }));
+          setPaymentState({...paymentState, amount: number })
           setShowData(false)
           setTimeout(function(){ 
             history.push('/payment/card')
-         }, 1500)
+         }, 1000)
         },
         validationSchema: Yup.object().shape({
           email: Yup.string().email('Invalid email').required(''),    
@@ -126,7 +127,8 @@ const Pushpay = () => {
               {showData && (
                   <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3">
                     {/* Pay NGN 1,000.00 */}
-                    Pay NGN {parseInt(values.number.toLocaleString())}
+                    {/* Pay NGN {parseInt(values.number.toLocaleString())} */}
+                    Pay NGN {values.number.toLocaleString()}
                   </Button>
                 )}
 

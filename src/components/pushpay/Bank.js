@@ -9,11 +9,15 @@ import { paymentFormular } from '../paymentsFormula';
 
 const Bank = () => {
 
+  const { paymentState, setPaymentState} = React.useContext(PushContext);
 
-  const [paymentconst, UpDatePayment] = React.useContext(PushContext);
+  const pValue = paymentFormular(paymentState?.amount, "bank")
 
     React.useEffect(() => {
-      UpDatePayment({...paymentconst, channel: "bank"})
+      if (paymentState.processingFee !== pValue.totalCharges) {
+        setPaymentState({...paymentState, channel: "bank", processingFee: pValue? pValue.totalCharges: 0})
+    }
+      // setPaymentState({...paymentState, channel: "bank"})
       // eslint-disable-next-line
     }, [])
 
@@ -124,7 +128,7 @@ const Bank = () => {
                           <div className="col-md px-0 mx-0">
                               <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3 border-0" onClick={()=> alert('Bank don enter')}>
                               {/* <span class="spinner-border spinner-border-sm mr-1"></span> */}
-                                Pay NGN {parseInt(paymentFormular(paymentconst?.amount, paymentconst?.channel)?.totalCharges).toLocaleString()}
+                                Pay NGN {parseInt(paymentFormular(paymentState?.amount, paymentState?.channel)?.totalCharges).toLocaleString()}
                               </Button>
                           </div>
                   </form>

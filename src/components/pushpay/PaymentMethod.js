@@ -21,7 +21,7 @@ import "./payment.css"
 import { MainRou, PowerRad, LinkStled } from "./styled"
 // import PaySide from "./PaySide"
 
-const PaymentMethod = ({ routes }) => {
+const  PaymentMethod = ({ routes }) => {
 
   // const currentRoute = useHistory().location.pathname.toUpperCase();
 
@@ -59,7 +59,7 @@ const PaymentMethod = ({ routes }) => {
                  <li className="liClass">
                     {route.icon} <span style={{ fontSize: ".8rem" }}>{route.page}</span>
                  </li>
-               </ul>
+               </ul>  
               </LinkStled>
              ))}
              </SideStyle>
@@ -69,6 +69,7 @@ const PaymentMethod = ({ routes }) => {
                     <p style={{fontSize: ".9rem"}}>Processing fee</p>
                     <Switch>
                       {routes.map((route, index) => (
+                        // <Route key={index} path={route.path} exact={route.exact} children={<route.sidebar /> }/>
                         <Route key={index} path={route.path} exact={route.exact} children={<route.sidebar /> }/>
                         ))}
                     </Switch>

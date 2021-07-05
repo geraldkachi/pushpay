@@ -9,21 +9,22 @@ import { PushContext } from '../../ContextProvider';
 
 const PushPayWallet = () => {
 
-    // const [dropdownOpen, setOpen] = useState(false)
+    const { paymentState, setPaymentState } = React.useContext(PushContext);
 
-    // const toggle = () => setOpen(!dropdownOpen)
-
-    const [PaymentContext, setPaymentContext] = React.useContext(PushContext);
-
-    // const {paymentconst, setPayment} = usePaymentContext();
-    // let oldPaymentObject = {...paymentconst};
+    // const {paymentState, setPaymentState} = usePaymentContext();
+    // let oldPaymentObject = {...paymentState};
     
     // React.useEffect(() => {
-    //     setPayment({...oldPaymentObject, channel: "wallet"})
+    //     setPaymentState({...oldPaymentObject, channel: "wallet"})
     // }, [])
 
+    const pValue = paymentFormular(paymentState?.amount, "wallet")
+
     React.useEffect(() => {
-        setPaymentContext({...PaymentContext, channel: "wallet"})
+        if (paymentState.processingFee !== pValue.totalCharges) {
+            setPaymentState({...paymentState, channel: "wallet", processingFee: pValue? pValue.totalCharges: 0})
+        }
+        // setPaymentState({...paymentState, channel: "wallet"})
             // eslint-disable-next-line
     }, [])
 
@@ -74,7 +75,7 @@ const PushPayWallet = () => {
                         <div className="col-md px-0 mx-0">
                             <Button type="submit" style={paybtn} onClick={()=> alert('Wallet has paid successfully')} className="text-center btn-block mx-auto px-5 fs-3 border-0">
                             {/* <span class="spinner-border spinner-border-sm mr-1"></span> */}
-                                Pay NGN {parseInt(paymentFormular(PaymentContext?.amount, PaymentContext?.channel)?.totalCharges).toLocaleString()}
+                                Pay NGN {parseInt(paymentFormular(paymentState?.amount, paymentState?.channel)?.totalCharges).toLocaleString()}
                             </Button>
                         </div>
                 </form>
