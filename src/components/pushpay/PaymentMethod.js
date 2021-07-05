@@ -36,8 +36,8 @@ const  PaymentMethod = ({ routes }) => {
            <div className="row mx-0 justify-content-center align-items-start">
         <Router>
             <div className="sidebars col-md-4">
-            <div className="header  mt-3">
-              <PushImg /> 
+            <div className="header mt-3">
+              <PushImg />
               <h4 className="my-3" style={{ fontSize: ".6rem", fontWeight: 500 }}>Choose payment method</h4>
             </div>
 
