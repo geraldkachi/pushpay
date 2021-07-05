@@ -161,10 +161,11 @@ const paybtn = {
 const input ={
     padding: "1rem",
     outline: "none",
+    border: 'none',
     borderWeight: "1px",
     borderColor: "#ccc",
     borderRadius: "20px",
-    fontFamily: 'Work Sans'
+    fontFamily: 'Work Sans',
 }
 
 const labeltext = {
