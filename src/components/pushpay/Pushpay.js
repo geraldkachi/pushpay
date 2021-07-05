@@ -125,7 +125,7 @@ const Pushpay = () => {
           {/*  */}
 
               {showData && (
-                  <Button type="submit" style={paybtn} className="text-center btn-block mx-auto px-5 fs-3">
+                  <Button type="submit" style={paybtn} className="text-center btn btn-block mx-auto px-5 fs-3">
                     {/* Pay NGN 1,000.00 */}
                     {/* Pay NGN {parseInt(values.number.toLocaleString())} */}
                     Pay NGN {values.number.toLocaleString()}

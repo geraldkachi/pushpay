@@ -57,7 +57,7 @@ const Payment = () => {
       sidebar: () => <p style={{fontSize: ".9rem"}} className="fs-1">NGN {parseInt((paymentFormular(paymentState?.amount, paymentState?.channel)?.totalCharges) - (paymentState?.amount)).toLocaleString()}</p>,
       main: () => <PushPayWallet/>,
       page: "PushPay Wallet",
-      icon: <WalletImg stroke="white" style={{ marginRight: ".5rem", }} />
+      icon: <WalletImg stroke="white" style={{ marginRight: ".5rem",textColor:"wh" }} />
     },  
   ]
 

@@ -14,7 +14,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Pushpay} />
         <Route path="/payment" component={Payment} />
-        <Redirect from="/payment" to="/payment/card" /> 
+        {/* <Redirect from="/payment" to="/payment/card" />  */}
         <Route path="*" component={NotFound} />
       </Switch>  
     </>
